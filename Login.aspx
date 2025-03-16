@@ -10,12 +10,11 @@
       }
       .container {
         width: 40%;
-        margin: 0 auto;
+        margin: 150px auto;
         padding: 20px;
         background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        margin-top: 50px;
       }
       h2 {
         text-align: center;
@@ -27,13 +26,13 @@
       }
       input[type="text"],
       input[type="password"],
-      button {
+           button {
         width: 100%;
         padding: 10px;
         margin-top: 5px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        box-sizing: border-box;
+        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
       }
       button {
         background-color: #009e9e;
@@ -48,21 +47,20 @@
         color: #009e9e;
         border: 1px solid #009e9e;
       }
-      .register-link {
+      .login-link {
         text-align: center;
         margin-top: 20px;
       }
-      .register-link a {
+      .login-link a {
         color: #009e9e;
         text-decoration: none;
       }
-      .register-link a:hover {
+      .login-link a:hover {
         text-decoration: underline;
       }
     </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+        <div class="container">
+            <h2 class="tittle-green">ĐĂNG NHẬP</h2>
          <label for="username">Tên đăng nhập:</label>
         <input type="text" id="username" name="username" required />
 
@@ -70,7 +68,7 @@
         <input type="password" id="password" name="password" required />
 
         <button type="submit" value="submit" >Đăng Nhập</button>
-      <div class="register-link">
+      <div class="login-link">
         Chưa có tài khoản? <a href="register.aspx">Đăng ký ngay</a>
         </div>
     </div>
