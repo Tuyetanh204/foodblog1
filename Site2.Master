@@ -13,7 +13,7 @@
         <!-- Điều hướng -->
         <div class="navbar">
             <div class="left-section">
-                <a href="home1.aspx" class="logo">FoodBlog</a>
+                <a href="Home.aspx" class="logo">FoodBlog</a>
             </div>
             <div class="right-section">
                 <asp:PlaceHolder ID="phNavLinks" runat="server"></asp:PlaceHolder>
