@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="foodblog1.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="navbar.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+              <!-- Header -->
+        <div class="navbar">
+      <div class="left-section">
+        <a href="home.html" class="logo">FoodBlog</a>
+      </div>
+      <div class="right-section"></div>
+    </div>
+    <form id="form1" runat="server">
+  
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+    </form>
+    <!-- Footer -->
+     <div class="footer">
+    <p>&copy; 2025 FoodBlog. All rights reserved.</p>
+    <ul class="footer-links">
+        <li><a href="home1.aspx"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="contact.aspx"><i class="fa fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="about-me">
+        <h4>About Me</h4>
+        <p>
+            Xin chào! Tôi là một người đam mê ẩm thực, chia sẻ công thức và hành trình ẩm thực đầy cảm hứng từ khắp mọi nơi.
+        </p>
+    </div>
+    <div class="social-links">
+        <a href="#"><i class="fa fa-facebook"></i> Facebook</a> |
+        <a href="#"><i class='fa fa-twitter'></i> Twitter</a> |
+        <a href="#"><i class='fa fa-instagram'></i> Instagram</a> |
+        <a href="#"><i class='fa fa-youtube'></i> YouTube</a>
+    </div>
+         </div>
+</body>
+</html>
