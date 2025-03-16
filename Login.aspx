@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="foodblog1.Login" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
       body {
@@ -32,7 +33,7 @@
         margin-top: 5px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
+        box-sizing: border-box;
       }
       button {
         background-color: #009e9e;
@@ -59,19 +60,18 @@
         text-decoration: underline;
       }
     </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-      <h2 class="tittle-green">ĐĂNG NHẬP</h2>
-      <form id="loginForm">
-        <label for="username">Tên đăng nhập:</label>
+         <label for="username">Tên đăng nhập:</label>
         <input type="text" id="username" name="username" required />
 
         <label for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" required />
 
-        <button type="submit">Đăng Nhập</button>
-      </form>
+        <button type="submit" value="submit" >Đăng Nhập</button>
       <div class="register-link">
         Chưa có tài khoản? <a href="register.aspx">Đăng ký ngay</a>
-      </div>
+        </div>
     </div>
 </asp:Content>

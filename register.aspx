@@ -63,11 +63,17 @@
     <div class="container">
       <h2 class="tittle-green">ĐĂNG KÝ</h2>
       <form id="registerForm">
-        <label for="username">Tên đăng nhập:</label>
-        <input type="text" id="username" name="username" required />
+        <label for="username">Họ và tên:</label>
+        <input type="text" id="fname" name="fname" required />
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
+
+          <label for="phone">Số điện thoại:</label>
+        <input type="text" id="phone" name="phone" required />
+
+                <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" required />
 
         <label for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" required />
@@ -79,7 +85,6 @@
           name="confirm-password"
           required
         />
-
         <button type="submit">Đăng Ký</button>
       </form>
       <div class="login-link">
