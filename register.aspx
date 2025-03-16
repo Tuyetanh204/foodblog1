@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="foodblog1.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="foodblog1.register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
       body {
@@ -25,6 +25,7 @@
         margin-top: 10px;
       }
       input[type="text"],
+      input[type="email"],
       input[type="password"],
       button {
         width: 100%;
@@ -47,31 +48,42 @@
         color: #009e9e;
         border: 1px solid #009e9e;
       }
-      .register-link {
+      .login-link {
         text-align: center;
         margin-top: 20px;
       }
-      .register-link a {
+      .login-link a {
         color: #009e9e;
         text-decoration: none;
       }
-      .register-link a:hover {
+      .login-link a:hover {
         text-decoration: underline;
       }
     </style>
     <div class="container">
-      <h2 class="tittle-green">ĐĂNG NHẬP</h2>
-      <form id="loginForm">
+      <h2 class="tittle-green">ĐĂNG KÝ</h2>
+      <form id="registerForm">
         <label for="username">Tên đăng nhập:</label>
         <input type="text" id="username" name="username" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
         <label for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" required />
 
-        <button type="submit">Đăng Nhập</button>
+        <label for="confirm-password">Xác nhận mật khẩu:</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          required
+        />
+
+        <button type="submit">Đăng Ký</button>
       </form>
-      <div class="register-link">
-        Chưa có tài khoản? <a href="register.aspx">Đăng ký ngay</a>
+      <div class="login-link">
+        Đã có tài khoản? <a href="login.aspx">Đăng nhập ngay</a>
       </div>
     </div>
 </asp:Content>
