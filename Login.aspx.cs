@@ -26,7 +26,7 @@ namespace foodblog1
                     // Đăng nhập thành công
                     Session["Username"] = user.Username;
                     Session["Fullname"] = user.Fullname;
-                    Response.Redirect("CourseList.aspx");
+                    Response.Redirect("Home.aspx");
                 }
                 else
                 {

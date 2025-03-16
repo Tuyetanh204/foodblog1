@@ -1,32 +1,28 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="foodblog1.Site1" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="foodblog1.Site2" %>
 <!DOCTYPE html>
-
-<html>
+<html lang="vi">
 <head runat="server">
-    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="navbar.css" />
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>FoodBlog</title>
+
 </head>
 <body>
-              <!-- Header -->
+    <form id="form2" runat="server">
+        <!-- Điều hướng -->
         <div class="navbar">
-      <div class="left-section">
-        <a href="Home.aspx" class="logo">FoodBlog</a>
-      </div>
-      <div class="right-section"></div>
-    </div>
-    <div class="main-content">
-    <form id="form1" runat="server">
-  
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-
-    </form>
+            <div class="left-section">
+                <a href="home1.aspx" class="logo">FoodBlog</a>
+            </div>
+            <div class="right-section">
+                <asp:PlaceHolder ID="phNavLinks" runat="server"></asp:PlaceHolder>
+            </div>
         </div>
-    <!-- Footer -->
-     <div class="footer">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+    <div class="footer">
     <p>&copy; 2025 FoodBlog. All rights reserved.</p>
     <ul class="footer-links">
         <li><a href="home1.aspx"><i class="fa fa-home"></i> Home</a></li>
@@ -44,6 +40,7 @@
         <a href="#"><i class='fa fa-instagram'></i> Instagram</a> |
         <a href="#"><i class='fa fa-youtube'></i> YouTube</a>
     </div>
-         </div>
+</div>
+
 </body>
 </html>

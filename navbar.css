@@ -11,14 +11,45 @@
     align-items: center;
     background-color: #008080;
     padding: 10px 20px;
-    position: fixed; /* Giữ header cố định ở trên cùng */
-    top: 0; /* Đặt nó ở vị trí trên cùng */
-    left: 0; /* Căn trái */
-    width: 100%; /* Chiều rộng bao phủ toàn bộ trang */
-    z-index: 1000; /* Đảm bảo nó hiển thị trên các phần tử khác */
+    position: fixed; /* Cố định thanh điều hướng */
+    top: 0;
+    left: 0;
+    width: 100%; /* Chiều rộng toàn bộ */
+    z-index: 1000; /* Ưu tiên hiển thị trên các phần khác */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng */
 }
 
+/* Nội dung chính */
+.main-content {
+    display: flex;
+    padding: 10px 60px;
+    margin-top: 70px; /* Tạo khoảng trống để không bị navbar che khuất */
 }
+
+.tittle-green {
+    color: #008080;
+    padding: 0;
+    margin: 20px 0;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+        .navbar a,
+        .dropdown .dropbtn {
+            padding: 10px;
+            text-align: left;
+        }
+
+    .main-content {
+        flex-direction: column;
+        margin-top: 100px; /* Thêm khoảng trống cho thiết bị nhỏ hơn */
+    }
+}
+
 
     .navbar .left-section {
         display: flex;
@@ -95,10 +126,6 @@
 }
 
 /* Bố cục chính */
-.main-content {
-    display: flex;
-    padding: 10px 60px;
-}
 
 .tittle-green {
     color: #008080;
@@ -111,28 +138,7 @@
     padding: 0;
     margin: 20px 0;
 }
-/* Media Queries cho điều chỉnh kích thước */
-@media screen and (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
 
-        .navbar a,
-        .dropdown .dropbtn {
-            padding: 10px;
-            text-align: left;
-        }
-
-    .main-content {
-        flex-direction: column;
-    }
-
-        .main-content .left,
-        .main-content .right {
-            margin-right: 0;
-            margin-bottom: 20px;
-        }
-}
 
 /*footer.css*/
 .footer {
