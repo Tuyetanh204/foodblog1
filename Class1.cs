@@ -13,6 +13,7 @@ namespace foodblog1
         public string category;
         public string img;
         public string ingredient;
+        public string time;
         public string content;
         public DateTime CreatedDate { get; set; }
         public string author;

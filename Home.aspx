@@ -44,14 +44,6 @@
                 <h2>Bài blog 1</h2>
                 <p>Nội dung bài blog 1...</p>
             </div>
-            <div class="article">
-                <h2>Bài blog 2</h2>
-                <p>Nội dung bài blog 2...</p>
-            </div>
-            <div class="article">
-                <h2>Bài blog 3</h2>
-                <p>Nội dung bài blog 3...</p>
-            </div>
         </div>
         <div class="right">
             <h2 class="tittle-green">DANH MỤC</h2>
