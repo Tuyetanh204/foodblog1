@@ -11,7 +11,11 @@ namespace foodblog1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                // Xử lý sự kiện khi nhấn nút đăng kí
+                
+            }
         }
     }
 }

@@ -5,8 +5,17 @@ using System.Web;
 
 namespace foodblog1
 {
-    public class Class1
+    //id - tiêu đề - danh mục - ảnh - nguyên liệu - các bước nấu - ngày tạo - tác giả 
+    public class Blog
     {
+        public string id;
+        public string title;
+        public string category;
+        public string img;
+        public string ingredient;
+        public string content;
+        public DateTime CreatedDate { get; set; }
+        public string author;
     }
     public class User
     {
