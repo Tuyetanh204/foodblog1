@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site2.Master"  AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="foodblog1.Home" %>
-
+<%@ Import Namespace="foodblog1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <style>
     .main-content .left {
@@ -14,9 +14,25 @@
       padding: 20px;
       margin-bottom: 20px;
     }
-    .main-content .article h2 {
-      margin-top: 0;
-    }
+.main-content .article {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .main-content .article img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .main-content .article .details {
+            flex: 1;
+        }
+        .main-content .article h2 {
+            margin-top: 0;
+            color: #009e9e;
+        }
     /* Phần danh mục */
     .category-list {
       padding: 0;
@@ -40,10 +56,29 @@
     <div class="main-content">
         <div class="left">
             <h2 class="tittle-green">CÔNG THỨC PHỔ BIẾN</h2>
-            <div class="article">
-                <h2>Bài blog 1</h2>
-                <p>Nội dung bài blog 1...</p>
-            </div>
+       <% 
+                // Lấy danh sách blog từ Application
+                var blogList = (List<Blog>)Application["BlogList"];
+                if (blogList != null)
+                {
+                    foreach (var blog in blogList)
+                    {
+            %>
+                        <div class="article">
+                            <img src="<%= blog.img %>" alt="<%= blog.title %>" />
+                            <div class="details">
+                                <h2><%= blog.title %></h2>
+                                <p><strong>Danh mục:</strong> <%= blog.category %></p>
+                                <p><strong>Thời gian nấu:</strong> <%= blog.time %></p>
+                                <p><strong>Nguyên liệu:</strong> <%= blog.ingredient %></p>
+                                <p><strong>Tác giả:</strong> <%= blog.author %></p>
+                                <p><%= blog.content.Substring(0, 100) %>...</p> <!-- Lấy tóm tắt nội dung -->
+                            </div>
+                        </div>
+            <% 
+                    }
+                }
+            %>
         </div>
         <div class="right">
             <h2 class="tittle-green">DANH MỤC</h2>
