@@ -12,8 +12,16 @@ namespace foodblog1
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            //Data test
 
-        }
+
+            //Tài khoản
+            Application["UserList"] = new List<User>
+    {
+        new User { Username = "admin", Password = "123", Fullname = "Admin 1", Phone = "1234567890", Email = "user1@example.com" },
+        new User { Username = "me123", Password = "123", Fullname = "User Two", Phone = "0987654321", Email = "user2@example.com" }
+    };
+    }
 
         protected void Session_Start(object sender, EventArgs e)
         {

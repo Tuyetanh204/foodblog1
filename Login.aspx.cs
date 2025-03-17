@@ -19,7 +19,8 @@ namespace foodblog1
                 string password = Request.Form["password"];
 
                 // Kiểm tra thông tin đăng nhập
-                User user = TestData.Users.Find(u => u.Username == username && u.Password == password);
+                List<User> userList = (List<User>)Application["UserList"];
+                User user = userList.Find(u => u.Username == username && u.Password == password);
 
                 if (user != null)
                 {
