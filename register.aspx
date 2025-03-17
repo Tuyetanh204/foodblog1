@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Đăng Ký" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="foodblog1.register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="foodblog1.register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         body {
@@ -64,7 +64,6 @@
     </style>
     <div class="container">
         <h2>Đăng Ký</h2>
-        <form id="registerForm" method="post" action="register.aspx">
             <label for="fname">Họ và tên:</label>
             <input type="text" id="fname" name="fname" placeholder="Nhập họ và tên" 
                    required pattern="^[a-zA-Z\s]+$" 
@@ -95,8 +94,7 @@
                    required oninput="validatePassword()" />
 
             <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
-            <button type="submit">Đăng Ký</button>
-        </form>
+            <button ttype="submit" value="submit">Đăng Ký</button>
         <div class="login-link">
             Đã có tài khoản? <a href="login.aspx">Đăng nhập ngay</a>
         </div>
