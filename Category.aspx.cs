@@ -23,6 +23,21 @@ namespace foodblog1
                     // Lọc danh sách bài viết theo danh mục
                     filteredBlogs = blogList.FindAll(b => b.category == category);
                 }
+                else if (blogList != null)
+                {
+                    // Hiển thị toàn bộ bài viết nếu không có query string
+                    filteredBlogs = blogList;
+                }
+
+                // Cập nhật tiêu đề danh mục
+                if (!string.IsNullOrEmpty(category))
+                {
+                    categoryTitle.InnerText = $"Danh mục / {category}";
+                }
+                else
+                {
+                    categoryTitle.InnerText = "Danh mục / Toàn bộ";
+                }
 
                 // Tạo HTML động
                 string htmlContent = "";
@@ -46,21 +61,11 @@ namespace foodblog1
                 }
                 else
                 {
-                    htmlContent = "<p>Không tìm thấy bài viết nào trong danh mục này.</p>";
+                    htmlContent = "<p>Không tìm thấy bài viết nào.</p>";
                 }
 
                 // Gán nội dung HTML vào container
                 articlesContainer.InnerHtml = htmlContent;
-
-                // Cập nhật tiêu đề danh mục
-                if (!string.IsNullOrEmpty(category))
-                {
-                    categoryTitle.InnerText = $"Danh mục / {category}";
-                }
-                else
-                {
-                    categoryTitle.InnerText = "Danh mục / Toàn bộ";
-                }
             }
         }
     }
