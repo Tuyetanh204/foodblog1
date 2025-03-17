@@ -70,9 +70,10 @@
                                 <h2><%= blog.title %></h2>
                                 <p><strong>Danh mục:</strong> <%= blog.category %></p>
                                 <p><strong>Thời gian nấu:</strong> <%= blog.time %></p>
-                                <p><strong>Nguyên liệu:</strong> <%= blog.ingredient %></p>
+                                <p><strong>Nguyên liệu:</strong> <% 
+                                                                     var summary = blog.ingredient.Length > 70 ? blog.ingredient.Substring(0, 70) + "..." : blog.ingredient;
+                                                                     Response.Write(summary); %></p>
                                 <p><strong>Tác giả:</strong> <%= blog.author %></p>
-                                <p><%= blog.content.Substring(0, 100) %>...</p> <!-- Lấy tóm tắt nội dung -->
                             </div>
                         </div>
             <% 
