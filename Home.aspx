@@ -84,11 +84,12 @@
         <div class="right">
             <h2 class="tittle-green">DANH MỤC</h2>
             <ul class="category-list">
-                <li><a href="mchay.aspx">Món chay</a></li>
-                <li><a href="#">Tráng miệng</a></li>
-                <li><a href="#">Món chính</a></li>
-                <li><a href="#">Ăn vặt</a></li>
-            </ul>
+    <li><a href="Category.aspx?category=Món chay">Món chay</a></li>
+    <li><a href="Category.aspx?category=Tráng miệng">Tráng miệng</a></li>
+    <li><a href="Category.aspx?category=Món chính">Món chính</a></li>
+    <li><a href="Category.aspx?category=Ăn vặt">Ăn vặt</a></li>
+</ul>
+
         </div>
     </div>
 </asp:Content>
