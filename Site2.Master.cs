@@ -36,7 +36,7 @@ namespace foodblog1
                 {
                     phNavLinks.Controls.Add(new Literal
                     {
-                        Text = "<a href='home1.aspx'>Trang chủ</a>"
+                        Text = "<a href='Home.aspx'>Trang chủ</a>"
                     });
                     phNavLinks.Controls.Add(new Literal
                     {
