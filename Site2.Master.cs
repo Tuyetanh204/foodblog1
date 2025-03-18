@@ -9,10 +9,7 @@ namespace foodblog1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-               update();
-            }
+               Update();
         }
 
         protected void Logout_Click(object sender, EventArgs e)
@@ -20,10 +17,11 @@ namespace foodblog1
             // Xóa Session khi người dùng đăng xuất
             Session.Clear();
             Session.Abandon();
-            Response.Redirect("Home.aspx"); // Điều hướng về trang chủ
-            update();
+            Response.Redirect("Home.aspx");
         }
-        protected void update()
+        
+        
+        protected void Update()
         {
             // Thêm nút mặc định luôn hiển thị, như "Trang chủ"
             phNavLinks.Controls.Add(new Literal { Text = "<a href='Home.aspx'>Trang chủ</a>" });
