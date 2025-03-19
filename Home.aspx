@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Trang chủ" Language="C#" MasterPageFile="~/Site2.Master"  AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="foodblog1.Home" %>
-<%@ Import Namespace="foodblog1" %>
+<%@ Import Namespace="foodblog1"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <style>
+
     .main-content .left {
       flex: 4;
       margin-right: 20px;
@@ -14,6 +15,7 @@
       padding: 20px;
       margin-bottom: 20px;
     }
+
 .main-content .article {
             background-color: #f2f2f2;
             padding: 20px;
@@ -89,6 +91,7 @@
 </a>
 <% 
         }
+        
     }
 %>
 

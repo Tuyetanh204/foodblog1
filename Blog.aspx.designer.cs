@@ -15,6 +15,15 @@ namespace foodblog1
     {
 
         /// <summary>
+        /// blogImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image blogImage;
+
+        /// <summary>
         /// blogTitle control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace foodblog1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogTitle;
+
+        /// <summary>
+        /// categoryLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor categoryLink;
 
         /// <summary>
         /// blogAuthor control.
@@ -42,22 +60,22 @@ namespace foodblog1
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogDate;
 
         /// <summary>
-        /// blogCategory control.
+        /// blogTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogCategory;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogTime;
 
         /// <summary>
-        /// blogImage control.
+        /// blogIngredient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image blogImage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogIngredient;
 
         /// <summary>
         /// blogContent control.

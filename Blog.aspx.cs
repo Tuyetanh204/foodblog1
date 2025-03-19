@@ -9,37 +9,42 @@ namespace foodblog1
 {
     public partial class Blog1 : System.Web.UI.Page
     {
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Lấy BlogId từ querystring
+            string blogId = Request.QueryString["BlogId"];
+            if (!string.IsNullOrEmpty(blogId))
             {
-                // Lấy BlogId từ querystring
-                string blogId = Request.QueryString["BlogId"];
-                if (!string.IsNullOrEmpty(blogId))
-                {
-                    // Lấy danh sách blog từ Application
-                    List<Blog> blogList = (List<Blog>)Application["BlogList"];
-                    Blog currentBlog = blogList?.Find(b => b.id == blogId);
+                // Lấy danh sách blog từ Application
+                List<Blog> blogList = (List<Blog>)Application["BlogList"];
+                Blog currentBlog = blogList?.Find(b => b.id == blogId);
 
-                    if (currentBlog != null)
-                    {
-                        // Hiển thị thông tin chi tiết blog
-                        blogTitle.InnerText = currentBlog.title;
-                        blogAuthor.InnerText = $"Tác giả: {currentBlog.author}";
-                        blogDate.InnerText = $"Ngày tạo: {currentBlog.CreatedDate.ToString("dd/MM/yyyy")}";
-                        blogCategory.InnerHtml = $"Danh mục: <a href='Category.aspx?category={currentBlog.category}'>{currentBlog.category}</a>";
-                        blogImage.ImageUrl = currentBlog.img;
-                        blogContent.InnerText = currentBlog.content;
-                    }
-                    else
-                    {
-                        // Xử lý nếu không tìm thấy blog
-                        Response.Write("<script>alert('Bài viết không tồn tại!');</script>");
-                    }
+                if (currentBlog != null)
+                {
+                    // Hiển thị thông tin blog
+                    blogTitle.InnerText = currentBlog.title;
+                    blogAuthor.InnerText = currentBlog.author;
+                    blogDate.InnerText = currentBlog.CreatedDate.ToString("dd/MM/yyyy");
+                    blogTime.InnerText = currentBlog.time;
+                    blogImage.ImageUrl = currentBlog.img;
+                    blogIngredient.InnerText = $"Nguyên liệu cần chuẩn bị: {currentBlog.ingredient}";
+                    blogContent.InnerText = currentBlog.content;
+
+                    // Cập nhật URL và nội dung cho thẻ <a>
+                    categoryLink.HRef = $"Category.aspx?category={currentBlog.category}";
+                    categoryLink.InnerText = currentBlog.category;
                 }
                 else
                 {
-                    // Xử lý nếu thiếu querystring
-                    Response.Write("<script>alert('Không tìm thấy BlogId!');</script>");
+                    // Xử lý nếu không tìm thấy blog
+                    Response.Write("<script>alert('Bài viết không tồn tại!');</script>");
                 }
+            }
+            else
+            {
+                // Xử lý nếu thiếu querystring
+                Response.Write("<script>alert('Không tìm thấy BlogId!');</script>");
             }
         }
     }
+}
