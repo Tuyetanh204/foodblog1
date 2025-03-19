@@ -27,12 +27,15 @@ namespace foodblog1
                     blogDate.InnerText = currentBlog.CreatedDate.ToString("dd/MM/yyyy");
                     blogTime.InnerText = currentBlog.time;
                     blogImage.ImageUrl = currentBlog.img;
-                    blogIngredient.InnerText = $"Nguyên liệu cần chuẩn bị: {currentBlog.ingredient}";
                     blogContent.InnerText = currentBlog.content;
 
-                    // Cập nhật URL và nội dung cho thẻ <a>
-                    categoryLink.HRef = $"Category.aspx?category={currentBlog.category}";
-                    categoryLink.InnerText = currentBlog.category;
+                    // Xử lý phần nguyên liệu
+                    ingredientList.InnerHtml = ""; // Xóa nội dung cũ (nếu có)
+                    string[] ingredients = currentBlog.ingredient.Split(new string[] { ", " }, StringSplitOptions.None);
+                    foreach (string ingredient in ingredients)
+                    {
+                        ingredientList.InnerHtml += $"<li>{ingredient}</li>";
+                    }
                 }
                 else
                 {

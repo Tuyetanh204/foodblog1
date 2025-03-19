@@ -64,9 +64,17 @@ a:hover {
 .related-item a:hover {
   text-decoration: underline;
 }
+.ingredient-list {
+  list-style-type: disc; /* Chấm tròn */
+  margin-left: 20px; /* Thụt vào để căn chỉnh đẹp hơn */
+  padding-left: 10px;
+}
+
+.ingredient-list li {
+  margin-bottom: 5px; /* Tạo khoảng cách giữa các nguyên liệu */
+}
+
     </style>
-
-
 
 
     <div class="container">
@@ -89,9 +97,10 @@ a:hover {
 
   <!-- Phần nửa dưới -->
   <div class="lower-section">
-    <p id="blogIngredient" runat="server"></p>
+    <ul id="ingredientList" runat="server" class="ingredient-list"></ul> <!-- Danh sách nguyên liệu -->
     <p id="blogContent" runat="server"></p>
-  </div>
+</div>
+
 
   <!-- Công thức tương tự -->
   <div class="related-posts">

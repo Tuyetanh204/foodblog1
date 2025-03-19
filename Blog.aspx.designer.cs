@@ -69,13 +69,13 @@ namespace foodblog1
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogTime;
 
         /// <summary>
-        /// blogIngredient control.
+        /// ingredientList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogIngredient;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ingredientList;
 
         /// <summary>
         /// blogContent control.
