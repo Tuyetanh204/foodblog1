@@ -20,8 +20,11 @@ namespace foodblog1
             if (!IsPostBack)
             {
                 LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo khi vào trang
+                btnCreateLi.Attributes["class"] = "tab-button active"; // Đảm bảo nút "Bài viết đã tạo" active ban đầu
+                btnSaveLi.Attributes["class"] = "tab-button";
             }
         }
+
         protected void btnCreateLi_Click(object sender, EventArgs e)
         {
             activeButton = "created";
@@ -56,6 +59,7 @@ namespace foodblog1
                 }
             }
         }
+
         private void LoadSavedBlogs()
         {
             var userList = Application["UserList"] as List<User>;
@@ -75,13 +79,16 @@ namespace foodblog1
             }
         }
 
-
         protected void gvBlogs_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string blogId = e.CommandArgument.ToString();
             if (e.CommandName == "DeleteBlog")
             {
                 DeleteBlog(blogId);
+                // Sau khi xóa, duy trì trạng thái "created" và cập nhật giao diện
+                activeButton = "created";
+                btnCreateLi.Attributes["class"] = "tab-button active";
+                btnSaveLi.Attributes["class"] = "tab-button";
             }
             else if (e.CommandName == "RemoveFromSaved")
             {

@@ -1,18 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="foodblog1.Manage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        table {
+        .gridview {
             width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
+            border: none; /* Loại bỏ viền xung quanh bảng */
         }
-        th, td {
-            border-bottom: 1px solid #ddd;
+        .gridview th, .gridview td {
+            border: none; /* Loại bỏ viền mặc định của các ô */
+            border-bottom: 1px solid #ddd; /* Chỉ giữ viền dưới */
             padding: 20px 8px;
             text-align: left;
         }
-        th {
+        .gridview th {
             background-color: #f2f2f2;
+        }
+        /* Đảm bảo không có viền cho hàng cuối cùng nếu cần */
+        .gridview tr:last-child td {
+            border-bottom: none; /* Loại bỏ viền dưới của hàng cuối cùng (tùy chọn) */
         }
         button, .aspButton {
             background-color: #009e9e;
@@ -39,7 +45,9 @@
             cursor: pointer;
         }
         .tab-button.active {
-            background-color: #007c7c;
+            background-color: white; /* Giống hover */
+            color: #009e9e;         /* Giống hover */
+            border: 1px solid #009e9e; /* Giống hover */
         }
         .tab-button:hover {
             background-color: white;
@@ -50,7 +58,7 @@
     <h2 id="title" class="tittle-green" style="text-align: center; margin-top: 40px">QUẢN LÍ BÀI VIẾT</h2>
     <asp:Button ID="btnCreateLi" runat="server" CssClass="tab-button active" Text="Bài viết đã tạo" OnClientClick="setActive(this); return true;" OnClick="btnCreateLi_Click" />
     <asp:Button ID="btnSaveLi" runat="server" CssClass="tab-button" Text="Bài viết đã lưu" OnClientClick="setActive(this); return true;" OnClick="btnSaveLi_Click" />
-    <asp:GridView ID="gvBlogs" runat="server" AutoGenerateColumns="false" CssClass="table" OnRowCommand="gvBlogs_RowCommand">
+    <asp:GridView ID="gvBlogs" runat="server" AutoGenerateColumns="false" CssClass="gridview" OnRowCommand="gvBlogs_RowCommand" BorderStyle="None" GridLines="None">
         <Columns>
             <asp:TemplateField HeaderText="STT">
                 <ItemTemplate>
