@@ -9,7 +9,7 @@
 
 </head>
 <body>
-
+    <form id="formsite2" runat="server">
         <!-- Điều hướng -->
         <div class="navbar">
             <div class="left-section">
@@ -19,9 +19,11 @@
                 <asp:PlaceHolder ID="phNavLinks" runat="server"></asp:PlaceHolder>
             </div>
         </div>
+
         <!-- ND trang -->
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
+        </form>
         <!-- Footer -->
     <div class="footer">
     <p>&copy; 2025 FoodBlog. All rights reserved.</p>
@@ -35,6 +37,7 @@
             Xin chào! Tôi là một người đam mê ẩm thực, chia sẻ công thức và hành trình ẩm thực đầy cảm hứng từ khắp mọi nơi.
         </p>
     </div>
+                
     <div class="social-links">
         <a href="#"><i class="fa fa-facebook"></i> Facebook</a> |
         <a href="#"><i class='fa fa-twitter'></i> Twitter</a> |

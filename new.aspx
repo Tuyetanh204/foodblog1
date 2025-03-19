@@ -105,7 +105,6 @@
             <h2 class="tittle-green">Tạo bài viết mới</h2>
             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
             <!-- Tiêu đề -->
-                <form id="createForm" runat="server" method="post">
                 <label for="title">Tiêu đề:</label>
                 <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết" required/>
 
@@ -149,7 +148,6 @@
                         <button type="submit">Lưu</button>
                     </div>
 
-    </form>
     </div>
 
     <script type="text/javascript">
@@ -190,7 +188,7 @@
             }
             // Cập nhật giá trị của hidden field; sử dụng dấu phẩy làm delimiter
             var hdn = document.getElementById("<%= hdnIngredients.ClientID %>");
-            hdn.value = ingredientsArr.join(",");
+            hdn.value = ingredientsArr.join(", ");
         }
 
         // Hàm xóa 1 nguyên liệu khỏi mảng và cập nhật lại giao diện
