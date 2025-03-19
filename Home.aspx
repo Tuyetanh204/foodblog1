@@ -68,35 +68,7 @@
     <div class="main-content">
         <div class="left">
             <h2 class="tittle-green">CÔNG THỨC PHỔ BIẾN</h2>
-      <% 
-    // Lấy danh sách blog từ Application
-    var blogList = (List<Blog>)Application["BlogList"];
-    if (blogList != null)
-    {
-        foreach (var blog in blogList)
-        {
-%>
-<a href="Blog.aspx?BlogId=<%= blog.id %>" class="article-link">
-    <div class="article">
-        <img src="<%= blog.img %>" alt="<%= blog.title %>" />
-        <div class="details">
-            <h2><%= blog.title %></h2>
-            <p><strong>Danh mục:</strong> <%= blog.category %></p>
-            <p><strong>Thời gian nấu:</strong> <%= blog.time %></p>
-            <p><strong>Nguyên liệu:</strong> <% 
-                var summary = blog.ingredient.Length > 70 ? blog.ingredient.Substring(0, 70) + "..." : blog.ingredient;
-                Response.Write(summary); 
-            %></p>
-            <p><strong>Tác giả:</strong> <%= blog.author %></p>
-        </div>
-    </div>
-</a>
-<% 
-        }
-        
-    }
-%>
-
+            <div id="articlesContainer" runat="server"></div>
         </div>
         <div class="right">
             <h2 class="tittle-green">DANH MỤC</h2>
