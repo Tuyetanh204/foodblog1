@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <form id="form2" runat="server">
+
         <!-- Điều hướng -->
         <div class="navbar">
             <div class="left-section">
@@ -19,9 +19,10 @@
                 <asp:PlaceHolder ID="phNavLinks" runat="server"></asp:PlaceHolder>
             </div>
         </div>
+        <!-- ND trang -->
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
-    </form>
+        <!-- Footer -->
     <div class="footer">
     <p>&copy; 2025 FoodBlog. All rights reserved.</p>
     <ul class="footer-links">

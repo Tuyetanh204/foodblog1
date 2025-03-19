@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site2.Master"  AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="foodblog1.Home" %>
+﻿<%@ Page Title="Trang chủ" Language="C#" MasterPageFile="~/Site2.Master"  AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="foodblog1.Home" %>
 <%@ Import Namespace="foodblog1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <style>
