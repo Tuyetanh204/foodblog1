@@ -35,12 +35,11 @@
         border-radius: 4px;
       }
       .button-group {
-    display: flex; /* Sử dụng flexbox để điều chỉnh */
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    gap: 10px; /* Khoảng cách giữa các nút */
-    margin-top: 20px; /* Khoảng cách từ nút đến các phần trên */
+        display: flex; /* Sử dụng flexbox để điều chỉnh */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        gap: 10px; /* Khoảng cách giữa các nút */
+        margin-top: 20px; /* Khoảng cách từ nút đến các phần trên */
       }
-
       button {
         background-color: #009e9e;
         border: none;
@@ -105,49 +104,53 @@
             <h2 class="tittle-green">Tạo bài viết mới</h2>
             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
             <!-- Tiêu đề -->
-                <label for="title">Tiêu đề:</label>
-                <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết" required/>
+            <label for="title">Tiêu đề:</label>
+            <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết" 
+                   required
+                   pattern=".{10,100}"
+                   title="Tiêu đề phải từ 10 đến 100 ký tự." />
 
             <!-- Danh mục -->
-                <label for="category">Danh mục:</label>
-        <select id="category" name="category" required>
-          <option value="Món chay">Món chay</option>
-          <option value="Tráng miệng">Tráng miệng</option>
-          <option value="Món chính">Món chính</option>
-          <option value="Ăn vặt">Ăn vặt</option>
-        </select>
+            <label for="category">Danh mục:</label>
+            <select id="category" name="category" required>
+              <option value="Món chay">Món chay</option>
+              <option value="Tráng miệng">Tráng miệng</option>
+              <option value="Món chính">Món chính</option>
+              <option value="Ăn vặt">Ăn vặt</option>
+            </select>
             <!-- Hình ảnh -->
-
-                <label for="fileImage">Hình ảnh món ăn:</label>
-                <asp:FileUpload ID="fileImage" runat="server" />
+            <label for="fileImage">Hình ảnh món ăn:</label>
+            <asp:FileUpload ID="fileImage" runat="server" />
 
             <!-- Thời gian nấu -->
-
-                <label for="time">Thời gian nấu (giờ/phút):</label>
-                    <input type="text" id="time" name="time" placeholder="VD: 30 phút" required/>
+            <label for="time">Thời gian nấu (giờ/phút):</label>
+            <input type="text" id="time" name="time" placeholder="VD: 30 phút" 
+                   required
+                   pattern="^\d+\s?(phút|giờ)$"
+                   title="Vui lòng nhập thời gian hợp lệ, ví dụ: '30 phút' hoặc '2 giờ'." />
 
             <!-- Nguyên liệu: Sử dụng input HTML và hidden field -->
-
-                <label for="txtIngredientCustom">Nguyên liệu:</label>
-                <!-- Input HTML thuần -->
-                <input type="text" id="txtIngredientCustom" placeholder="Nhập nguyên liệu và nhấn Enter" />
-                <!-- HiddenField để lưu danh sách nguyên liệu dưới dạng chuỗi -->
-                <asp:HiddenField ID="hdnIngredients" runat="server" />
-                <!-- Danh sách nguyên liệu hiển thị -->
-                <ul id="ingredientList" class="ingredients-list"></ul>
-
+            <label for="txtIngredientCustom">Nguyên liệu:</label>
+            <!-- Input HTML thuần -->
+            <input type="text" id="txtIngredientCustom" placeholder="Nhập nguyên liệu và nhấn Enter" 
+                   pattern=".{2,50}"
+                   title="Nguyên liệu phải từ 2 đến 50 ký tự." />
+            <!-- HiddenField để lưu danh sách nguyên liệu dưới dạng chuỗi -->
+            <asp:HiddenField ID="hdnIngredients" runat="server" />
+            <!-- Danh sách nguyên liệu hiển thị -->
+            <ul id="ingredientList" class="ingredients-list"></ul>
 
             <!-- Các bước thực hiện -->
-
-                <label for="txtSteps">Các bước thực hiện:</label>
-                <asp:TextBox ID="txtSteps" runat="server" TextMode="MultiLine" placeholder="Nhập chi tiết các bước thực hiện" />
-
+            <label for="txtSteps">Các bước thực hiện:</label>
+            <asp:TextBox ID="txtSteps" runat="server" TextMode="MultiLine" placeholder="Nhập chi tiết các bước thực hiện" 
+                         required="required"
+                         pattern=".{20,1000}"
+                         title="Các bước thực hiện phải từ 20 đến 1000 ký tự." />
             <!-- Nút -->
-                    <div class="button-group">
-                        <button type="reset">Làm mới</button>
-                        <button type="submit">Lưu</button>
-                    </div>
-
+            <div class="button-group">
+                <button type="reset">Làm mới</button>
+                <button type="submit">Lưu</button>
+            </div>
     </div>
 
     <script type="text/javascript">
@@ -160,6 +163,11 @@
                 e.preventDefault();
                 var ing = this.value.trim();
                 if (ing !== "") {
+                    // Kiểm tra độ dài nguyên liệu từ 2 đến 50 ký tự
+                    if (ing.length < 2 || ing.length > 50) {
+                        alert("Nguyên liệu phải từ 2 đến 50 ký tự.");
+                        return;
+                    }
                     ingredientsArr.push(ing);
                     this.value = "";
                     updateIngredientDisplay();
