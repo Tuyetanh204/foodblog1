@@ -79,6 +79,42 @@ h3 {
   font-size: 20px; /* Tăng kích thước chấm tròn */
   color: #009e9e; /* Đổi màu chấm tròn */
 }
+/* Nút Lưu - màu xanh */
+.save-button.save {
+    background-color: #009e9e; /* Màu nền xanh */
+    border: none;
+    color: white; /* Màu chữ trắng */
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.save-button.save:hover {
+    background-color: white; /* Đổi màu nền khi hover */
+    color: #009e9e; /* Màu chữ xanh */
+    border: 1px solid #009e9e;
+}
+
+/* Nút Bỏ Lưu - màu đỏ */
+.save-button.unsave {
+    background-color: #e74c3c; /* Màu nền đỏ */
+    border: none;
+    color: white; /* Màu chữ trắng */
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.save-button.unsave:hover {
+    background-color: white; /* Đổi màu nền khi hover */
+    color: #e74c3c; /* Màu chữ đỏ */
+    border: 1px solid #e74c3c;
+}
+
 
     </style>
 
@@ -91,12 +127,13 @@ h3 {
     </div>
     <div class="right-side">
       <h1 id="blogTitle" class="tittle-green" runat="server"></h1>
-
        <a id="categoryLink" runat="server" href="#">Danh mục mặc định</a>
 
  <p>&#128100; <!-- Icon người --> <span id="blogAuthor" runat="server"></span></p>
 <p>&#128197; <!-- Icon lịch --> <span id="blogDate" runat="server"></span></p>
 <p>&#9200; <!-- Icon đồng hồ --> <span id="blogTime" runat="server"></span></p>
+
+        <asp:Button ID="btnSave" runat="server" Text="Lưu" OnClick="ToggleSaveStatus" Visible="false" CssClass="save-button" />
 
     </div>
   </div>
