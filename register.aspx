@@ -94,7 +94,7 @@
                    required oninput="validatePassword()" />
 
             <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
-            <button ttype="submit" value="submit">Đăng Ký</button>
+            <button type="submit" value="submit">Đăng Ký</button>
         <div class="login-link">
             Đã có tài khoản? <a href="login.aspx">Đăng nhập ngay</a>
         </div>

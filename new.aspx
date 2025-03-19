@@ -1,9 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="new.aspx.cs" Inherits="foodblog1._new" %>
-<%@ Import Namespace="foodblog1" %>
+﻿<%@ Page Title="Đăng ký" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="new.aspx.cs" Inherits="foodblog1._new" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Vì MasterPage của bạn đã có ScriptManager nên không cần thêm ở đây nếu đã có -->
     <style>
-        /* Các nhóm form, nhập liệu */
        body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
@@ -12,7 +9,7 @@
       }
       .container {
         width: 80%;
-        margin: 0 auto;
+        margin: 70px auto;
         padding: 20px;
         background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -37,12 +34,18 @@
         border: 1px solid #ddd;
         border-radius: 4px;
       }
+      .button-group {
+    display: flex; /* Sử dụng flexbox để điều chỉnh */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách từ nút đến các phần trên */
+      }
+
       button {
         background-color: #009e9e;
         border: none;
         color: white;
         padding: 10px 20px;
-        text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
@@ -99,42 +102,33 @@
     </style>
 
     <div class="container">
-        <div class="article">
             <h2 class="tittle-green">Tạo bài viết mới</h2>
             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
-
             <!-- Tiêu đề -->
-            <div class="form-group">
-                <label for="txtTitle">Tiêu đề:</label>
-                <asp:TextBox ID="txtTitle" runat="server" placeholder="Nhập tiêu đề bài viết" />
-            </div>
+                <form id="createForm" runat="server" method="post">
+                <label for="title">Tiêu đề:</label>
+                <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết" required/>
 
             <!-- Danh mục -->
-            <div class="form-group">
-                <label for="ddlCategory">Danh mục:</label>
-                <asp:DropDownList ID="ddlCategory" runat="server">
-                    <asp:ListItem Text="Chọn danh mục" Value="" />
-                    <asp:ListItem Text="Tráng miệng" Value="Tráng miệng" />
-                    <asp:ListItem Text="Món chính" Value="Món chính" />
-                    <asp:ListItem Text="Món chay" Value="Món chay" />
-                    <asp:ListItem Text="Ăn vặt" Value="Ăn vặt" />
-                </asp:DropDownList>
-            </div>
-
+                <label for="category">Danh mục:</label>
+        <select id="category" name="category" required>
+          <option value="Món chay">Món chay</option>
+          <option value="Tráng miệng">Tráng miệng</option>
+          <option value="Món chính">Món chính</option>
+          <option value="Ăn vặt">Ăn vặt</option>
+        </select>
             <!-- Hình ảnh -->
-            <div class="form-group">
-                <label for="fileImage">Hình ảnh bài viết:</label>
+
+                <label for="fileImage">Hình ảnh món ăn:</label>
                 <asp:FileUpload ID="fileImage" runat="server" />
-            </div>
 
             <!-- Thời gian nấu -->
-            <div class="form-group">
-                <label for="txtTime">Thời gian nấu (phút):</label>
-                <asp:TextBox ID="txtTime" runat="server" placeholder="VD: 30" />
-            </div>
+
+                <label for="time">Thời gian nấu (giờ/phút):</label>
+                    <input type="text" id="time" name="time" placeholder="VD: 30 phút" required/>
 
             <!-- Nguyên liệu: Sử dụng input HTML và hidden field -->
-            <div class="form-group">
+
                 <label for="txtIngredientCustom">Nguyên liệu:</label>
                 <!-- Input HTML thuần -->
                 <input type="text" id="txtIngredientCustom" placeholder="Nhập nguyên liệu và nhấn Enter" />
@@ -142,19 +136,20 @@
                 <asp:HiddenField ID="hdnIngredients" runat="server" />
                 <!-- Danh sách nguyên liệu hiển thị -->
                 <ul id="ingredientList" class="ingredients-list"></ul>
-            </div>
+
 
             <!-- Các bước thực hiện -->
-            <div class="form-group">
+
                 <label for="txtSteps">Các bước thực hiện:</label>
                 <asp:TextBox ID="txtSteps" runat="server" TextMode="MultiLine" placeholder="Nhập chi tiết các bước thực hiện" />
-            </div>
 
-            <!-- Nút đăng bài -->
-            <div class="form-group">
-                <asp:Button ID="btnSubmit" runat="server" Text="Đăng bài" OnClick="btnSubmit_Click" />
-            </div>
-        </div>
+            <!-- Nút -->
+                    <div class="button-group">
+                        <button type="reset">Làm mới</button>
+                        <button type="submit">Lưu</button>
+                    </div>
+
+    </form>
     </div>
 
     <script type="text/javascript">
