@@ -46,19 +46,22 @@ namespace foodblog1
                 {
                     foreach (var blog in filteredBlogs)
                     {
-                        htmlContent += $@"
-                        <div class='article'>
-                            <img src='{blog.img}' alt='{blog.title}' />
-                            <div class='details'>
-                                <h2>{blog.title}</h2>
-                                <p><strong>Danh mục:</strong> {blog.category}</p>
-                                <p><strong>Thời gian nấu:</strong> {blog.time}</p>
-                                <p><strong>Nguyên liệu:</strong> {(blog.ingredient.Length > 70 ? blog.ingredient.Substring(0, 70) + "..." : blog.ingredient)}</p>
-                                <p><strong>Tác giả:</strong> {blog.author}</p>
-                            </div>
-                        </div>";
-                    }
+                    htmlContent += $@"
+<a href='Blog.aspx?BlogId={blog.id}' class='article-link'>
+    <div class='article'>
+        <img src='{blog.img}' alt='{blog.title}' />
+        <div class='details'>
+            <h2>{blog.title}</h2>
+            <p><strong>Danh mục:</strong> {blog.category}</p>
+            <p><strong>Thời gian nấu:</strong> {blog.time}</p>
+            <p><strong>Nguyên liệu:</strong> {(blog.ingredient.Length > 70 ? blog.ingredient.Substring(0, 70) + "..." : blog.ingredient)}</p>
+            <p><strong>Tác giả:</strong> {blog.author}</p>
+        </div>
+    </div>
+</a>";
+
                 }
+            }
                 else
                 {
                     htmlContent = "<p>Không tìm thấy bài viết nào.</p>";

@@ -54,10 +54,12 @@
     .category-list a:hover {
       background-color: #b6e0e0;
     }
+
+    /*Nhấn vào mỗi bài viết*/
     .article-link {
-    text-decoration: none; /* Loại bỏ gạch chân */
-    color: inherit; /* Kế thừa màu sắc từ cha */
-    display: block; /* Đảm bảo link bao toàn bộ article */
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 .article-link:hover .article {
     background-color: #b6e0e0; /* Hiệu ứng hover khi di chuột vào */

@@ -33,6 +33,15 @@
             margin-top: 0;
             color: #009e9e;
         }
+            /*Nhấn vào mỗi bài viết*/
+    .article-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.article-link:hover .article {
+    background-color: #b6e0e0; /* Hiệu ứng hover khi di chuột vào */
+}
     </style>
 
     <div class="main-content">
