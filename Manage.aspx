@@ -31,14 +31,28 @@
             color: #009e9e;
             border: 1px solid #009e9e;
         }
-        .active {
-            background-color: #007c7c;
-            color: white;
-        }
+        .tab-button {
+    background-color: #009e9e;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #007c7c; /* Màu đậm hơn cho trạng thái active */
+}
+
+.tab-button:hover {
+    background-color: white;
+    color: #009e9e;
+    border: 1px solid #009e9e;
+}
+
     </style>
     <h2 id="title" class="tittle-green" style="text-align: center; margin-top: 40px">QUẢN LÍ BÀI VIẾT</h2>
-    <button id="btnCreateLi" runat="server" CssClass="<%= activeButton == "created" ? "active" : "" %>">Bài viết đã tạo</button>
-    <button id="btnSaveLi" runat="server" CssClass="<%= activeButton == "saved" ? "active" : "" %>">Bài viết đã lưu</button>
+    <button id="btnCreateLi" class="tab-button active" onclick="setActive(this)">Bài viết đã tạo</button>
+<button id="btnSaveLi" class="tab-button" onclick="setActive(this)">Bài viết đã lưu</button>
     <table>
         <thead>
             <tr>
@@ -52,5 +66,17 @@
             <%= htmlContent %>
         </tbody>
     </table>t>
+    <script>
+        function setActive(button) {
+            // Xóa lớp "active" khỏi tất cả các nút
+            var buttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            // Thêm lớp "active" cho nút được click
+            button.classList.add("active");
+        }
+    </script>
 
 </asp:Content>
