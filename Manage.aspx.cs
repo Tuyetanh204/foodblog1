@@ -11,34 +11,36 @@ namespace foodblog1
     {
         protected string activeButton
         {
-            get { return ViewState["ActiveButton"] as string ?? "created"; } // Lấy từ ViewState, mặc định là "created"
-            set { ViewState["ActiveButton"] = value; } // Lưu vào ViewState
+            get { return ViewState["ActiveButton"] as string ?? "created"; }
+            set { ViewState["ActiveButton"] = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo khi vào trang
-                btnCreateLi.Attributes["class"] = "tab-button active"; // Đảm bảo nút "Bài viết đã tạo" active ban đầu
-                btnSaveLi.Attributes["class"] = "tab-button";
+                LoadCreatedBlogs();
+                hdnActiveButton.Value = "created"; // Khởi tạo giá trị ban đầu cho HiddenField
+            }
+            else
+            {
+                // Đồng bộ activeButton với giá trị từ HiddenField sau PostBack
+                activeButton = hdnActiveButton.Value;
             }
         }
 
         protected void btnCreateLi_Click(object sender, EventArgs e)
         {
             activeButton = "created";
+            hdnActiveButton.Value = "created";
             LoadCreatedBlogs();
-            btnCreateLi.Attributes["class"] = "tab-button active";
-            btnSaveLi.Attributes["class"] = "tab-button";
         }
 
         protected void btnSaveLi_Click(object sender, EventArgs e)
         {
             activeButton = "saved";
+            hdnActiveButton.Value = "saved";
             LoadSavedBlogs();
-            btnSaveLi.Attributes["class"] = "tab-button active";
-            btnCreateLi.Attributes["class"] = "tab-button";
         }
 
         private void LoadCreatedBlogs()
@@ -85,18 +87,14 @@ namespace foodblog1
             if (e.CommandName == "DeleteBlog")
             {
                 DeleteBlog(blogId);
-                // Sau khi xóa, duy trì trạng thái "created" và cập nhật giao diện
                 activeButton = "created";
-                btnCreateLi.Attributes["class"] = "tab-button active";
-                btnSaveLi.Attributes["class"] = "tab-button";
+                hdnActiveButton.Value = "created";
             }
             else if (e.CommandName == "RemoveFromSaved")
             {
                 RemoveFromSaved(blogId);
-                // Sau khi bỏ lưu, duy trì trạng thái "saved" và cập nhật giao diện
                 activeButton = "saved";
-                btnSaveLi.Attributes["class"] = "tab-button active";
-                btnCreateLi.Attributes["class"] = "tab-button";
+                hdnActiveButton.Value = "saved";
             }
         }
 
@@ -113,14 +111,13 @@ namespace foodblog1
                     blogList.Remove(blog);
                     Application["BlogList"] = blogList;
 
-                    // Xóa blogId khỏi CreateList của tất cả user
                     foreach (User user in userList)
                     {
                         user.CreateList.Remove(blogId);
                     }
                     Application["UserList"] = userList;
 
-                    LoadCreatedBlogs(); // Cập nhật lại danh sách
+                    LoadCreatedBlogs();
                 }
             }
         }
@@ -138,7 +135,7 @@ namespace foodblog1
                 {
                     currentUser.SaveList.Remove(blogId);
                     Application["UserList"] = userList;
-                    LoadSavedBlogs(); // Cập nhật lại danh sách
+                    LoadSavedBlogs();
                 }
             }
         }
