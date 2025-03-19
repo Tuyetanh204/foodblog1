@@ -10,7 +10,7 @@
            .container { width: 60%; margin: 0 auto; padding: 30px; background-color: white; border-radius: 8px; margin-top: 80px; }
 .upper-section {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 a {
   text-decoration: none;
@@ -26,7 +26,9 @@ a:hover {
 }
 
 .blog-image {
-  width: 100%;
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -71,7 +73,11 @@ h3 {
 }
 
 .ingredient-list li {
-  margin-bottom: 5px; /* Tạo khoảng cách giữa các nguyên liệu */
+  margin-bottom: 2px; /* Tạo khoảng cách giữa các nguyên liệu */
+}
+.ingredient-list li::marker {
+  font-size: 20px; /* Tăng kích thước chấm tròn */
+  color: #009e9e; /* Đổi màu chấm tròn */
 }
 
     </style>
