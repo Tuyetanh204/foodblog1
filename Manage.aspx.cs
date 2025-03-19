@@ -3,149 +3,137 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Text;
 using System.Web.UI.WebControls;
 
 namespace foodblog1
 {
     public partial class Manage : System.Web.UI.Page
     {
-            protected string htmlContent = ""; // HTML động để hiển thị danh sách
-            protected string activeButton = "created"; // Trạng thái mặc định là danh sách đã tạo
+        protected string activeButton
+        {
+            get { return ViewState["ActiveButton"] as string ?? "created"; } // Lấy từ ViewState, mặc định là "created"
+            set { ViewState["ActiveButton"] = value; } // Lưu vào ViewState
+        }
 
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
+                LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo khi vào trang
+            }
+        }
+        protected void btnCreateLi_Click(object sender, EventArgs e)
+        {
+            activeButton = "created";
+            LoadCreatedBlogs();
+            btnCreateLi.Attributes["class"] = "tab-button active";
+            btnSaveLi.Attributes["class"] = "tab-button";
+        }
+
+        protected void btnSaveLi_Click(object sender, EventArgs e)
+        {
+            activeButton = "saved";
+            LoadSavedBlogs();
+            btnSaveLi.Attributes["class"] = "tab-button active";
+            btnCreateLi.Attributes["class"] = "tab-button";
+        }
+
+        private void LoadCreatedBlogs()
+        {
+            var userList = Application["UserList"] as List<User>;
+            var blogList = Application["BlogList"] as List<Blog>;
+
+            if (Session["Username"] != null && userList != null && blogList != null)
+            {
+                string username = Session["Username"].ToString();
+                User currentUser = userList.Find(u => u.Username == username);
+
+                if (currentUser != null)
                 {
-                    LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo khi vào trang
+                    var data = blogList.Where(b => currentUser.CreateList.Contains(b.id)).ToList();
+                    gvBlogs.DataSource = data;
+                    gvBlogs.DataBind();
                 }
             }
-            protected void btnCreateLi_Click(object sender, EventArgs e)
-            {
-                activeButton = "created"; // Gán trạng thái nút active
-                LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo
-            }
+        }
+        private void LoadSavedBlogs()
+        {
+            var userList = Application["UserList"] as List<User>;
+            var blogList = Application["BlogList"] as List<Blog>;
 
-            protected void btnSaveLi_Click(object sender, EventArgs e)
+            if (Session["Username"] != null && userList != null && blogList != null)
             {
-                activeButton = "saved"; // Gán trạng thái nút active
-                LoadSavedBlogs(); // Hiển thị danh sách bài viết đã lưu
-            }
+                string username = Session["Username"].ToString();
+                User currentUser = userList.Find(u => u.Username == username);
 
-            private void LoadCreatedBlogs()
-            {
-                var userList = Application["UserList"] as List<User>;
-                var blogList = Application["BlogList"] as List<Blog>;
-
-                if (Session["Username"] != null && userList != null && blogList != null)
+                if (currentUser != null)
                 {
-                    string username = Session["Username"].ToString();
-                    User currentUser = userList.Find(u => u.Username == username);
-
-                    if (currentUser != null)
-                    {
-                        htmlContent = ""; // Xóa nội dung cũ
-                        int index = 1;
-
-                        foreach (var blogId in currentUser.CreateList)
-                        {
-                            var blog = blogList.Find(b => b.id == blogId);
-                            if (blog != null)
-                            {
-                            var sb = new StringBuilder();
-                            sb.Append("<tr>");
-                            sb.Append($"<td>{index++}</td>");
-                            sb.Append($"<td>{blog.title}</td>");
-                            sb.Append($"<td>{blog.category}</td>");
-                            sb.Append("<td>");
-                            sb.Append($"<button onclick=\"window.location.href='Edit.aspx?BlogId={blog.id}'\">Sửa</button>");
-                            sb.Append($"<button onclick=\"deleteBlog('{blog.id}')\">Xóa</button>");
-                            sb.Append("</td>");
-                            sb.Append("</tr>");
-                            htmlContent += sb.ToString();
-
-
-                        }
-                    }
-                    }
+                    var data = blogList.Where(b => currentUser.SaveList.Contains(b.id)).ToList();
+                    gvBlogs.DataSource = data;
+                    gvBlogs.DataBind();
                 }
             }
+        }
 
-            private void LoadSavedBlogs()
+
+        protected void gvBlogs_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string blogId = e.CommandArgument.ToString();
+            if (e.CommandName == "DeleteBlog")
             {
-                var userList = Application["UserList"] as List<User>;
-                var blogList = Application["BlogList"] as List<Blog>;
+                DeleteBlog(blogId);
+            }
+            else if (e.CommandName == "RemoveFromSaved")
+            {
+                RemoveFromSaved(blogId);
+                // Sau khi bỏ lưu, duy trì trạng thái "saved" và cập nhật giao diện
+                activeButton = "saved";
+                btnSaveLi.Attributes["class"] = "tab-button active";
+                btnCreateLi.Attributes["class"] = "tab-button";
+            }
+        }
 
-                if (Session["Username"] != null && userList != null && blogList != null)
+        protected void DeleteBlog(string blogId)
+        {
+            var blogList = Application["BlogList"] as List<Blog>;
+            var userList = Application["UserList"] as List<User>;
+
+            if (blogList != null && Session["Username"] != null)
+            {
+                var blog = blogList.Find(b => b.id == blogId);
+                if (blog != null)
                 {
-                    string username = Session["Username"].ToString();
-                    User currentUser = userList.Find(u => u.Username == username);
+                    blogList.Remove(blog);
+                    Application["BlogList"] = blogList;
 
-                    if (currentUser != null)
+                    // Xóa blogId khỏi CreateList của tất cả user
+                    foreach (User user in userList)
                     {
-                        htmlContent = ""; // Xóa nội dung cũ
-                        int index = 1;
-
-                        foreach (var blogId in currentUser.SaveList)
-                        {
-                            var blog = blogList.Find(b => b.id == blogId);
-                            if (blog != null)
-                            {
-
-                            // Tạo một StringBuilder để xây dựng HTML
-                            StringBuilder sb = new StringBuilder();
-
-                            sb.Append("<tr>");
-                            sb.Append($"<td>{index++}</td>");
-                            sb.Append($"<td>{blog.title}</td>");
-                            sb.Append($"<td>{blog.category}</td>");
-                            sb.Append("<td>");
-                            sb.Append($"<button onclick=\"window.location.href='Edit.aspx?BlogId={blog.id}'\">Sửa</button>");
-                            sb.Append($"<button onclick=\"RemoveFromSaved('{blog.id}')\">Bỏ lưu</button>");
-                            sb.Append("</td>");
-                            sb.Append("</tr>");
-
-                            // Thêm nội dung vào htmlContent
-                            htmlContent += sb.ToString();
-
-                        }
+                        user.CreateList.Remove(blogId);
                     }
-                    }
+                    Application["UserList"] = userList;
+
+                    LoadCreatedBlogs(); // Cập nhật lại danh sách
                 }
             }
+        }
 
-            protected void DeleteBlog(string blogId)
+        protected void RemoveFromSaved(string blogId)
+        {
+            var userList = Application["UserList"] as List<User>;
+
+            if (Session["Username"] != null && userList != null)
             {
-                var blogList = Application["BlogList"] as List<Blog>;
+                string username = Session["Username"].ToString();
+                User currentUser = userList.Find(u => u.Username == username);
 
-                if (blogList != null && Session["Username"] != null)
+                if (currentUser != null)
                 {
-                    var blog = blogList.Find(b => b.id == blogId);
-                    if (blog != null)
-                    {
-                        blogList.Remove(blog);
-                        Application["BlogList"] = blogList;
-                        LoadCreatedBlogs(); // Cập nhật danh sách sau khi xóa
-                    }
-                }
-            }
-
-            protected void RemoveFromSaved(string blogId)
-            {
-                var userList = Application["UserList"] as List<User>;
-
-                if (Session["Username"] != null && userList != null)
-                {
-                    string username = Session["Username"].ToString();
-                    User currentUser = userList.Find(u => u.Username == username);
-
-                    if (currentUser != null)
-                    {
-                        currentUser.SaveList.Remove(blogId);
-                        Application["UserList"] = userList;
-                        LoadSavedBlogs(); // Cập nhật danh sách sau khi bỏ lưu
-                    }
+                    currentUser.SaveList.Remove(blogId);
+                    Application["UserList"] = userList;
+                    LoadSavedBlogs(); // Cập nhật lại danh sách
                 }
             }
         }
     }
+}

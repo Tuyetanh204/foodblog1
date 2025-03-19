@@ -8,15 +8,15 @@ namespace foodblog1
     //id - tiêu đề - danh mục - ảnh - nguyên liệu - các bước nấu - ngày tạo - tác giả 
     public class Blog
     {
-        public string id;
-        public string title;
-        public string category;
-        public string img;
-        public string ingredient;
-        public string time;
-        public string content;
+        public string id { get; set; }
+        public string title { get; set; }
+        public string category { get; set; }
+        public string img { get; set; }
+        public string ingredient { get; set; }
+        public string time { get; set; }
+        public string content { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string author;
+        public string author { get; set; }
     }
     public class User
     {
