@@ -49,11 +49,17 @@ namespace foodblog1
                     litMessage.Text = "<p style='color:red;'>Vui lòng điền đầy đủ các thông tin bắt buộc!</p>";
                     return;
                 }
+                List<Blog> blogList = Application["BlogList"] as List<Blog>;
+                // Tìm ID lớn nhất trong danh sách hiện tại
+                int maxId = blogList.Count > 0 ? blogList.Max(b => int.Parse(b.id)) : 0;
 
-                // Tạo đối tượng Blog mới dựa theo lớp Blog bạn đã định nghĩa
+                // Tạo ID mới bằng cách tăng maxId thêm 1
+                string newId = (maxId + 1).ToString();
+
+                // Tạo đối tượng Blog mới
                 Blog newBlog = new Blog
                 {
-                    id = Guid.NewGuid().ToString(),
+                    id = newId,
                     title = title,
                     category = category,
                     img = imagePath,
@@ -64,8 +70,6 @@ namespace foodblog1
                     author = Session["Username"]?.ToString() ?? "Ẩn danh"
                 };
 
-                // Lấy danh sách Blog từ Application, nếu chưa có thì khởi tạo mới
-                List<Blog> blogList = Application["BlogList"] as List<Blog>;
                 if (blogList == null)
                 {
                     blogList = new List<Blog>();
