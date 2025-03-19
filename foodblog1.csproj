@@ -87,6 +87,7 @@
     <Content Include="img\supthit.jpg" />
     <Content Include="img\phobo.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="Manage.aspx" />
     <Content Include="navbar.css" />
     <Content Include="new.aspx" />
     <Content Include="register.aspx" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="new.aspx.cs">
       <DependentUpon>new.aspx</DependentUpon>

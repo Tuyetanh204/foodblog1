@@ -107,8 +107,8 @@
             <label for="title">Tiêu đề:</label>
             <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết" 
                    required
-                   pattern=".{10,100}"
-                   title="Tiêu đề phải từ 10 đến 100 ký tự." />
+                   pattern=".{5,100}"
+                   title="Tiêu đề phải từ 5 đến 100 ký tự." />
 
             <!-- Danh mục -->
             <label for="category">Danh mục:</label>
