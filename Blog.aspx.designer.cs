@@ -24,6 +24,24 @@ namespace foodblog1
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogTitle;
 
         /// <summary>
+        /// blogAuthor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogAuthor;
+
+        /// <summary>
+        /// blogDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blogDate;
+
+        /// <summary>
         /// blogCategory control.
         /// </summary>
         /// <remarks>

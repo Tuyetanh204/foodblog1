@@ -64,8 +64,8 @@
     <div class="container">
       <h1 id="blogTitle" class="tittle-green" runat="server"></h1>
       <div class="post-meta">
-        <p runat="server">Tác giả: Tên người tạo</p>
-        <p runat="server">Ngày tạo: 8/8/2024</p>
+        <p id="blogAuthor" runat="server">Tác giả: Tên người tạo</p>
+        <p id="blogDate" runat="server">Ngày tạo: 8/8/2024</p>
         <p id="blogCategory" runat="server">Danh mục: <a href="Category.aspx?category=Tráng miệng">Tráng miệng</a></p>
       </div>
       <div class="post-content">

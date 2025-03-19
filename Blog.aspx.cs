@@ -21,11 +21,13 @@ namespace foodblog1
 
                     if (currentBlog != null)
                     {
-                        // Hiển thị thông tin blog lên giao diện
+                        // Hiển thị thông tin chi tiết blog
                         blogTitle.InnerText = currentBlog.title;
-                        blogCategory.InnerText = currentBlog.category;
-                        blogContent.InnerText = currentBlog.content;
+                        blogAuthor.InnerText = $"Tác giả: {currentBlog.author}";
+                        blogDate.InnerText = $"Ngày tạo: {currentBlog.CreatedDate.ToString("dd/MM/yyyy")}";
+                        blogCategory.InnerHtml = $"Danh mục: <a href='Category.aspx?category={currentBlog.category}'>{currentBlog.category}</a>";
                         blogImage.ImageUrl = currentBlog.img;
+                        blogContent.InnerText = currentBlog.content;
                     }
                     else
                     {
