@@ -51,5 +51,6 @@
         <tbody id="blogsContainer" runat="server">
             <%= htmlContent %>
         </tbody>
-    </table>
+    </table>t>
+
 </asp:Content>

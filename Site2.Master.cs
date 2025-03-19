@@ -34,7 +34,7 @@ namespace foodblog1
                     Text = "<div class='dropdown'><button class='dropbtn' disabled>Cá nhân</button><div class='dropdown-content'>"
                 });
                 phNavLinks.Controls.Add(new Literal { Text = "<a href='new.aspx'>Tạo bài</a>" });
-                phNavLinks.Controls.Add(new Literal { Text = "<a href='manage.aspx'>Quản lý</a>" });
+                phNavLinks.Controls.Add(new Literal { Text = "<a href='Manage.aspx'>Quản lý</a>" });
 
                 // Tạo nút "Đăng xuất" sử dụng LinkButton
                 LinkButton logoutButton = new LinkButton

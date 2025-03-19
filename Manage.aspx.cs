@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace foodblog1
@@ -52,18 +53,20 @@ namespace foodblog1
                             var blog = blogList.Find(b => b.id == blogId);
                             if (blog != null)
                             {
-                            htmlContent += $@"
-<tr>
-    <td>{index++}</td>
-    <td>{blog.title}</td>
-    <td>{blog.category}</td>
-    <td>
-        <button onclick='window.location.href=\"Edit.aspx? BlogId = { blog.id }\"'>Sửa</button>
-             < button onclick = 'DeleteBlog(\"{blog.id}\")' > Xóa </ button >   
-          </ td >
-      </ tr > ";
+                            var sb = new StringBuilder();
+                            sb.Append("<tr>");
+                            sb.Append($"<td>{index++}</td>");
+                            sb.Append($"<td>{blog.title}</td>");
+                            sb.Append($"<td>{blog.category}</td>");
+                            sb.Append("<td>");
+                            sb.Append($"<button onclick=\"window.location.href='Edit.aspx?BlogId={blog.id}'\">Sửa</button>");
+                            sb.Append($"<button onclick=\"deleteBlog('{blog.id}')\">Xóa</button>");
+                            sb.Append("</td>");
+                            sb.Append("</tr>");
+                            htmlContent += sb.ToString();
 
-                            }
+
+                        }
                     }
                     }
                 }
@@ -89,18 +92,25 @@ namespace foodblog1
                             var blog = blogList.Find(b => b.id == blogId);
                             if (blog != null)
                             {
-                                htmlContent += $@"
-                            <tr>
-                                <td>{index++}</td>
-                                <td>{blog.title}</td>
-                                <td>{blog.category}</td>
-                                <td>
-                                    <button onclick='RemoveFromSaved(\"{ blog.id}\")'>Bỏ lưu</button>
-</ td >
 
-</ tr > ";
-                            }
+                            // Tạo một StringBuilder để xây dựng HTML
+                            StringBuilder sb = new StringBuilder();
+
+                            sb.Append("<tr>");
+                            sb.Append($"<td>{index++}</td>");
+                            sb.Append($"<td>{blog.title}</td>");
+                            sb.Append($"<td>{blog.category}</td>");
+                            sb.Append("<td>");
+                            sb.Append($"<button onclick=\"window.location.href='Edit.aspx?BlogId={blog.id}'\">Sửa</button>");
+                            sb.Append($"<button onclick=\"RemoveFromSaved('{blog.id}')\">Bỏ lưu</button>");
+                            sb.Append("</td>");
+                            sb.Append("</tr>");
+
+                            // Thêm nội dung vào htmlContent
+                            htmlContent += sb.ToString();
+
                         }
+                    }
                     }
                 }
             }
