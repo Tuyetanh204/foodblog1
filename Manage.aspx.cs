@@ -20,7 +20,6 @@ namespace foodblog1
                     LoadCreatedBlogs(); // Hiển thị danh sách bài viết đã tạo khi vào trang
                 }
             }
-
             protected void btnCreateLi_Click(object sender, EventArgs e)
             {
                 activeButton = "created"; // Gán trạng thái nút active

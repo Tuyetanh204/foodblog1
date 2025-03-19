@@ -51,8 +51,8 @@
 
     </style>
     <h2 id="title" class="tittle-green" style="text-align: center; margin-top: 40px">QUẢN LÍ BÀI VIẾT</h2>
-    <button id="btnCreateLi" class="tab-button active" onclick="setActive(this)">Bài viết đã tạo</button>
-<button id="btnSaveLi" class="tab-button" onclick="setActive(this)">Bài viết đã lưu</button>
+<asp:Button ID="btnCreateLi" runat="server" CssClass="tab-button active" Text="Bài viết đã tạo" OnClientClick="setActive(this); return true;" OnClick="btnCreateLi_Click" />
+<asp:Button ID="btnSaveLi" runat="server" CssClass="tab-button" Text="Bài viết đã lưu" OnClientClick="setActive(this); return true;" OnClick="btnSaveLi_Click" />
     <table>
         <thead>
             <tr>
@@ -65,7 +65,7 @@
         <tbody id="blogsContainer" runat="server">
             <%= htmlContent %>
         </tbody>
-    </table>t>
+    </table>
     <script>
         function setActive(button) {
             // Xóa lớp "active" khỏi tất cả các nút
