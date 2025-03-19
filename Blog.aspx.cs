@@ -28,7 +28,8 @@ namespace foodblog1
                     blogTime.InnerText = currentBlog.time;
                     blogImage.ImageUrl = currentBlog.img;
                     blogContent.InnerText = currentBlog.content;
-
+                    categoryLink.HRef = $"Category.aspx?category={currentBlog.category}";
+                    categoryLink.InnerText = currentBlog.category;
                     // Xử lý phần nguyên liệu
                     ingredientList.InnerHtml = ""; // Xóa nội dung cũ (nếu có)
                     string[] ingredients = currentBlog.ingredient.Split(new string[] { ", " }, StringSplitOptions.None);

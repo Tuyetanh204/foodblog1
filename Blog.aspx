@@ -52,7 +52,7 @@ a:hover {
   margin-top: 50px;
 }
 
-.related-posts h3 {
+h3 {
   color: #009e9e;
 }
 
@@ -97,7 +97,9 @@ a:hover {
 
   <!-- Phần nửa dưới -->
   <div class="lower-section">
-    <ul id="ingredientList" runat="server" class="ingredient-list"></ul> <!-- Danh sách nguyên liệu -->
+    <h3>Nguyên liệu</h3>
+    <ul id="ingredientList" runat="server" class="ingredient-list"></ul>
+    <h3>Các bước nấu</h3>
     <p id="blogContent" runat="server"></p>
 </div>
 
