@@ -74,7 +74,7 @@
         <input type="text" id="username" name="username" runat="server" required />
 
         <label>Mật khẩu:</label>
-        <input type="password" id="password" name="password" runat="server" required />
+        <input type="text" id="password" name="password" runat="server" required />
 
 <div class="checkbox-container">
     <asp:CheckBox ID="chkRememberMe" runat="server" Text="Ghi nhớ đăng nhập" />

@@ -53,15 +53,7 @@ namespace foodblog1
                     }
                     else
                     {
-                        // Xóa cookie nếu "Ghi nhớ đăng nhập" không được chọn
-                        if (Request.Cookies["Username"] != null)
-                        {
-                            Response.Cookies["Username"].Expires = DateTime.Now.AddDays(-1);
-                        }
-                        if (Request.Cookies["Password"] != null)
-                        {
-                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
-                        }
+ 
                     }
 
                     // Điều hướng đến trang Home
