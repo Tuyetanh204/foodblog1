@@ -3,64 +3,58 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Vì MasterPage của bạn đã có ScriptManager nên không cần thêm ở đây nếu đã có -->
     <style>
-        /* Tổng thể, căn giữa nội dung */
-        .main-content {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        /* Kiểu dáng của khung form */
-        .article {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .article h2 {
-            margin-top: 0;
-            font-size: 24px;
-            color: #009e9e;
-        }
         /* Các nhóm form, nhập liệu */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #333;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="file"],
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px 12px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group textarea {
-            resize: vertical;
-            height: 80px;
-        }
-        /* Nút đăng bài */
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #009e9e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .form-group button:hover {
-            background-color: #007b7b;
-        }
+       body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h2 {
+        text-align: center;
+        color: #009e9e;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      textarea,
+      select,
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #009e9e;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      button:hover {
+        background-color: white;
+        color: #009e9e;
+        border: 1px solid #009e9e;
+      }
         /* Danh sách nguyên liệu */
         .ingredients-list {
             margin-top: 10px;
@@ -104,9 +98,9 @@
         }
     </style>
 
-    <div class="main-content">
+    <div class="container">
         <div class="article">
-            <h2>Tạo bài viết mới</h2>
+            <h2 class="tittle-green">Tạo bài viết mới</h2>
             <asp:Literal ID="litMessage" runat="server"></asp:Literal>
 
             <!-- Tiêu đề -->

@@ -4,7 +4,6 @@
 
 <html>
 <head runat="server">
-    <title></title>
     <link rel="stylesheet" href="navbar.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
