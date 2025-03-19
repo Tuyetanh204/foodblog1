@@ -25,5 +25,7 @@ namespace foodblog1
         public string Fullname { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public List<string> SaveList { get; set; } = new List<string>();
+        public List<string> CreateList { get; set; } = new List<string>();
     }
 }

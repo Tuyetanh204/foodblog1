@@ -17,10 +17,29 @@ namespace foodblog1
 
             //Tài khoản
             Application["UserList"] = new List<User>
+{
+    new User
     {
-        new User { Username = "admin", Password = "123", Fullname = "Admin 1", Phone = "1234567890", Email = "user1@example.com" },
-        new User { Username = "me123", Password = "123", Fullname = "User Two", Phone = "0987654321", Email = "user2@example.com" }
-    };
+        Username = "admin",
+        Password = "123",
+        Fullname = "Admin 1",
+        Phone = "1234567890",
+        Email = "user1@example.com",
+        SaveList = new List<string> { "1", "2", "3" }, // ID các blog đã thích
+        CreateList = new List<string> { "4", "5" }    // ID các bài viết đã tạo
+    },
+    new User
+    {
+        Username = "me123",
+        Password = "123",
+        Fullname = "User Two",
+        Phone = "0987654321",
+        Email = "user2@example.com",
+        SaveList = new List<string> { "6", "7" },     
+        CreateList = new List<string> { "8", "9" }   
+    }
+};
+
             ////Blog:  id - tiêu đề - danh mục - ảnh - nguyên liệu - các bước nấu - ngày tạo - tác giả 
             Application["BlogList"] = new List<Blog>
     {

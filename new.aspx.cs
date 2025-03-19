@@ -69,13 +69,21 @@ namespace foodblog1
                     CreatedDate = DateTime.Now,
                     author = Session["Username"]?.ToString() ?? "Ẩn danh"
                 };
-
-                if (blogList == null)
-                {
-                    blogList = new List<Blog>();
-                }
+                //Thêm blog vào application
                 blogList.Add(newBlog);
                 Application["BlogList"] = blogList;
+
+                // Thêm ID bài viết mới vào CreateList của User
+                List<User> userList = Application["UserList"] as List<User>;
+                if (userList != null)
+                {
+                    string currentUsername = Session["Username"].ToString();
+                    User currentUser = userList.Find(u => u.Username == currentUsername);
+                    if (currentUser != null)
+                    {
+                        currentUser.CreateList.Add(newId);
+                    }
+                }
 
                 litMessage.Text = "<p style='color:green;'>Bài viết đã được đăng thành công!</p>";
                 // Reset hidden field và mảng ingredients (nếu bạn muốn làm cho client cập nhật lại: Người dùng phải reload lại trang nếu phương pháp client hoàn toàn)
