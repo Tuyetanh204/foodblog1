@@ -69,11 +69,6 @@
             color: #009e9e !important;
             border: 1px solid #009e9e !important;
         }
-        .tab-button:hover {
-            background-color: white;
-            color: #009e9e;
-            border: 1px solid #009e9e;
-        }
         h2.tittle-green {
             color: #008080;
             text-align: center;
