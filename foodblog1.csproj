@@ -67,7 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BlogPost.aspx" />
+    <Content Include="Blog.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -93,12 +93,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogPost.aspx.cs">
-      <DependentUpon>BlogPost.aspx</DependentUpon>
+    <Compile Include="Blog.aspx.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BlogPost.aspx.designer.cs">
-      <DependentUpon>BlogPost.aspx</DependentUpon>
+    <Compile Include="Blog.aspx.designer.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>
