@@ -7,26 +7,64 @@ using System.Web.UI.WebControls;
 
 namespace foodblog1
 {
-
-    public partial class Login : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
+        public partial class Login : System.Web.UI.Page
         {
-            if (IsPostBack)
+            protected void Page_Load(object sender, EventArgs e)
             {
-                // Lấy dữ liệu từ form
-                string username = Request.Form["username"];
-                string password = Request.Form["password"];
+                if (!IsPostBack)
+                {
+                    // Kiểm tra cookie và tự động điền thông tin
+                    if (Request.Cookies["Username"] != null && Request.Cookies["Password"] != null)
+                    {
+                        username.Value = Request.Cookies["Username"].Value;
+                        password.Value = Request.Cookies["Password"].Value; 
+                    }
+                }
+            else
+            {
+                string userInput = username.Value.Trim(); // Lấy giá trị từ input username
+                string passInput = password.Value.Trim(); // Lấy giá trị từ input password
 
                 // Kiểm tra thông tin đăng nhập
                 List<User> userList = (List<User>)Application["UserList"];
-                User user = userList.Find(u => u.Username == username && u.Password == password);
+                User user = userList.Find(u => u.Username == userInput && u.Password == passInput);
 
                 if (user != null)
                 {
                     // Đăng nhập thành công
                     Session["Username"] = user.Username;
                     Session["Fullname"] = user.Fullname;
+
+                    // Kiểm tra xem người dùng có chọn "Ghi nhớ đăng nhập" không
+                    if (chkRememberMe.Checked)
+                    {
+                        // Tạo cookie lưu thông tin đăng nhập
+                        HttpCookie userCookie = new HttpCookie("Username", userInput)
+                        {
+                            Expires = DateTime.Now.AddDays(7) // Lưu trong 7 ngày
+                        };
+                        Response.Cookies.Add(userCookie);
+
+                        HttpCookie passCookie = new HttpCookie("Password", passInput)
+                        {
+                            Expires = DateTime.Now.AddDays(7)
+                        };
+                        Response.Cookies.Add(passCookie);
+                    }
+                    else
+                    {
+                        // Xóa cookie nếu "Ghi nhớ đăng nhập" không được chọn
+                        if (Request.Cookies["Username"] != null)
+                        {
+                            Response.Cookies["Username"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                        if (Request.Cookies["Password"] != null)
+                        {
+                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                    }
+
+                    // Điều hướng đến trang Home
                     Response.Redirect("Home.aspx");
                 }
                 else
@@ -37,5 +75,6 @@ namespace foodblog1
             }
         }
 
+            
+        }
     }
-}

@@ -57,14 +57,29 @@
       .login-link a:hover {
         text-decoration: underline;
       }
+      .checkbox-container {
+    display: flex;
+    align-items: center; /* Căn giữa checkbox và chữ theo chiều dọc */
+    margin-top: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px; /* Khoảng cách giữa checkbox và chữ */
+}
+
     </style>
         <div class="container">
             <h2 class="tittle-green">ĐĂNG NHẬP</h2>
-         <label for="username">Tên đăng nhập:</label>
-        <input type="text" id="username" name="username" required />
+         <label>Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" runat="server" required />
 
-        <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" required />
+        <label>Mật khẩu:</label>
+        <input type="password" id="password" name="password" runat="server" required />
+
+<div class="checkbox-container">
+    <asp:CheckBox ID="chkRememberMe" runat="server" Text="Ghi nhớ đăng nhập" />
+</div>
+
 
         <button type="submit" value="submit" >Đăng Nhập</button>
       <div class="login-link">
