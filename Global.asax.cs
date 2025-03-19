@@ -81,7 +81,7 @@ namespace foodblog1
     time="60 phút",
     content = "Pha sốt trộn gồm hỗn hợp: sữa chua Hy Lạp, mật ong, nước chanh và giấm táo. Trộn tất cả các nguyên liệu còn lại với sốt trong tô lớn. Bảo quản tủ lạnh ngăn mát và ăn trong vòng 2 ngày",
     CreatedDate = new DateTime(2024, 1, 10),
-    author = "Nguyen Tuyet"},
+    author = "admin"},
 
     new Blog {
   id = "5",
@@ -92,7 +92,7 @@ namespace foodblog1
   time = "30 phút",
   content = "Luộc thịt gà, xé nhỏ thịt. Hành tây thái mỏng, ngâm giấm đường. Trộn gà, hành tây, rau răm với nước mắm pha tỏi ớt. Rắc lạc rang lên trên khi ăn.",
   CreatedDate = new DateTime(2025, 2, 28),
-  author = "Admin 2"
+  author = "admin"
 },
 
     new Blog {

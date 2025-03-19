@@ -1,62 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 namespace foodblog1
 {
     public partial class _new : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack) // Kiểm tra khi người dùng gửi dữ liệu qua form
+            if (!IsPostBack)
             {
-                // Lấy dữ liệu từ các trường nhập liệu khi submit
-                string title = Request.Form.Get("title");
-                string category = Request.Form.Get("category");
-                string time = Request.Form.Get("time");
-                string steps = txtSteps.Text.Trim();
-
-                string imagePath = "";
-                if (fileImage.HasFile)
+                if (Session["Username"] == null)
                 {
-                    string fileExt = System.IO.Path.GetExtension(fileImage.FileName).ToLower();
-                    string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
-                    if (!allowedExtensions.Contains(fileExt))
-                    {
-                        litMessage.Text = "<p style='color:red;'>Chỉ được upload tệp hình ảnh (JPG, PNG, GIF)!</p>";
-                        return;
-                    }
-                    string fileName = fileImage.FileName;
-                    imagePath = "img/" + fileName;
-                    fileImage.SaveAs(Server.MapPath(imagePath));
+                    Response.Redirect("Login.aspx"); // Chuyển hướng nếu chưa đăng nhập (giả định có trang Login)
                 }
 
-
-                // Lấy danh sách nguyên liệu từ hidden field
-                string ingredientsStr = hdnIngredients.Value;
-                // Nếu cần, bạn có thể chuyển đổi ingredientsStr thành mảng:
-                // string[] ingredientsArray = ingredientsStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                // Kiểm tra thông tin bắt buộc
-                if (string.IsNullOrEmpty(title) ||
-                    string.IsNullOrEmpty(category) ||
-                    string.IsNullOrEmpty(ingredientsStr) ||
-                    string.IsNullOrEmpty(steps))
+                if (Request.QueryString["BlogId"] != null)
                 {
-                    litMessage.Text = "<p style='color:red;'>Vui lòng điền đầy đủ các thông tin bắt buộc!</p>";
+                    string blogId = Request.QueryString["BlogId"];
+                    LoadBlogForEdit(blogId);
+                }
+            }
+            else
+            {
+                SaveBlog();
+            }
+        }
+
+        private void LoadBlogForEdit(string blogId)
+        {
+            var blogList = Application["BlogList"] as List<Blog>;
+            if (blogList != null)
+            {
+                var blog = blogList.Find(b => b.id == blogId);
+                if (blog != null && blog.author == Session["Username"].ToString())
+                {
+                    pageTitle.InnerText = "Chỉnh sửa bài viết";
+                    litMessage.Text = "<p style='color:blue;'>Đang chỉnh sửa bài viết: " + blog.title + "</p>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "SetFormValues",
+                        $"document.getElementById('title').value = '{blog.title.Replace("'", "\\'")}'; " +
+                        $"document.getElementById('category').value = '{blog.category}'; " +
+                        $"document.getElementById('time').value = '{blog.time}'; " +
+                        $"document.getElementById('{txtSteps.ClientID}').value = '{blog.content.Replace("'", "\\'")}';", true);
+                    lblCurrentImage.Text = $"Ảnh hiện tại: {blog.img}";
+                    lblCurrentImage.Visible = true;
+                    hdnIngredients.Value = blog.ingredient;
+                    ViewState["Ingredients"] = blog.ingredient; // Lưu vào ViewState để JavaScript sử dụng
+                }
+                else
+                {
+                    litMessage.Text = "<p style='color:red;'>Không tìm thấy bài viết hoặc bạn không có quyền chỉnh sửa!</p>";
+                }
+            }
+        }
+
+        private void SaveBlog()
+        {
+            string title = Request.Form.Get("title");
+            string category = Request.Form.Get("category");
+            string time = Request.Form.Get("time");
+            string steps = txtSteps.Text.Trim();
+            string ingredientsStr = hdnIngredients.Value;
+
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(category) ||
+                string.IsNullOrEmpty(ingredientsStr) || string.IsNullOrEmpty(steps))
+            {
+                litMessage.Text = "<p style='color:red;'>Vui lòng điền đầy đủ các thông tin bắt buộc!</p>";
+                return;
+            }
+
+            string imagePath = "";
+            if (fileImage.HasFile)
+            {
+                string fileExt = System.IO.Path.GetExtension(fileImage.FileName).ToLower();
+                string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!allowedExtensions.Contains(fileExt))
+                {
+                    litMessage.Text = "<p style='color:red;'>Chỉ được upload tệp hình ảnh (JPG, PNG, GIF)!</p>";
                     return;
                 }
-                List<Blog> blogList = Application["BlogList"] as List<Blog>;
-                // Tìm ID lớn nhất trong danh sách hiện tại
-                int maxId = blogList.Count > 0 ? blogList.Max(b => int.Parse(b.id)) : 0;
+                string fileName = Guid.NewGuid().ToString() + fileExt;
+                imagePath = "img/" + fileName;
+                fileImage.SaveAs(Server.MapPath(imagePath));
+            }
 
-                // Tạo ID mới bằng cách tăng maxId thêm 1
+            var blogList = Application["BlogList"] as List<Blog>;
+            string currentUsername = Session["Username"].ToString();
+
+            if (Request.QueryString["BlogId"] != null) // Chỉnh sửa
+            {
+                string blogId = Request.QueryString["BlogId"];
+                var blog = blogList.Find(b => b.id == blogId);
+                if (blog != null && blog.author == currentUsername)
+                {
+                    blog.title = title;
+                    blog.category = category;
+                    blog.time = time;
+                    blog.content = steps;
+                    blog.ingredient = ingredientsStr;
+                    if (!string.IsNullOrEmpty(imagePath)) blog.img = imagePath;
+                    blog.CreatedDate = DateTime.Now;
+
+                    Application.Lock();
+                    Application["BlogList"] = blogList;
+                    Application.UnLock();
+
+                    litMessage.Text = "<p style='color:green;'>Bài viết đã được cập nhật thành công!</p>";
+                    Response.Redirect("Manage.aspx");
+                }
+            }
+            else // Tạo mới
+            {
+                int maxId = blogList.Count > 0 ? blogList.Max(b => int.Parse(b.id)) : 0;
                 string newId = (maxId + 1).ToString();
 
-                // Tạo đối tượng Blog mới
                 Blog newBlog = new Blog
                 {
                     id = newId,
@@ -67,30 +127,27 @@ namespace foodblog1
                     time = time,
                     content = steps,
                     CreatedDate = DateTime.Now,
-                    author = Session["Username"]?.ToString() ?? "Ẩn danh"
+                    author = currentUsername
                 };
-                //Thêm blog vào application
+
+                Application.Lock();
                 blogList.Add(newBlog);
                 Application["BlogList"] = blogList;
 
-                // Thêm ID bài viết mới vào CreateList của User
-                List<User> userList = Application["UserList"] as List<User>;
-                if (userList != null)
+                var userList = Application["UserList"] as List<User>;
+                User currentUser = userList.Find(u => u.Username == currentUsername);
+                if (currentUser != null)
                 {
-                    string currentUsername = Session["Username"].ToString();
-                    User currentUser = userList.Find(u => u.Username == currentUsername);
-                    if (currentUser != null)
-                    {
-                        currentUser.CreateList.Add(newId);
-                    }
+                    currentUser.CreateList.Add(newId);
                 }
+                Application["UserList"] = userList;
+                Application.UnLock();
 
                 litMessage.Text = "<p style='color:green;'>Bài viết đã được đăng thành công!</p>";
-                // Reset hidden field và mảng ingredients (nếu bạn muốn làm cho client cập nhật lại: Người dùng phải reload lại trang nếu phương pháp client hoàn toàn)
-                hdnIngredients.Value = "";
+                Response.Redirect("Manage.aspx");
             }
-        }
 
-        
+            hdnIngredients.Value = "";
+        }
     }
 }

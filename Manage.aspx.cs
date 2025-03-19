@@ -17,14 +17,18 @@ namespace foodblog1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx"); // Chuyển hướng nếu chưa đăng nhập (giả định có trang Login)
+            }
+
             if (!IsPostBack)
             {
                 LoadCreatedBlogs();
-                hdnActiveButton.Value = "created"; // Khởi tạo giá trị ban đầu cho HiddenField
+                hdnActiveButton.Value = "created";
             }
             else
             {
-                // Đồng bộ activeButton với giá trị từ HiddenField sau PostBack
                 activeButton = hdnActiveButton.Value;
             }
         }
@@ -47,18 +51,14 @@ namespace foodblog1
         {
             var userList = Application["UserList"] as List<User>;
             var blogList = Application["BlogList"] as List<Blog>;
+            string username = Session["Username"].ToString();
+            User currentUser = userList?.Find(u => u.Username == username);
 
-            if (Session["Username"] != null && userList != null && blogList != null)
+            if (currentUser != null && blogList != null)
             {
-                string username = Session["Username"].ToString();
-                User currentUser = userList.Find(u => u.Username == username);
-
-                if (currentUser != null)
-                {
-                    var data = blogList.Where(b => currentUser.CreateList.Contains(b.id)).ToList();
-                    gvBlogs.DataSource = data;
-                    gvBlogs.DataBind();
-                }
+                var data = blogList.Where(b => currentUser.CreateList.Contains(b.id)).ToList();
+                gvBlogs.DataSource = data;
+                gvBlogs.DataBind();
             }
         }
 
@@ -66,18 +66,14 @@ namespace foodblog1
         {
             var userList = Application["UserList"] as List<User>;
             var blogList = Application["BlogList"] as List<Blog>;
+            string username = Session["Username"].ToString();
+            User currentUser = userList?.Find(u => u.Username == username);
 
-            if (Session["Username"] != null && userList != null && blogList != null)
+            if (currentUser != null && blogList != null)
             {
-                string username = Session["Username"].ToString();
-                User currentUser = userList.Find(u => u.Username == username);
-
-                if (currentUser != null)
-                {
-                    var data = blogList.Where(b => currentUser.SaveList.Contains(b.id)).ToList();
-                    gvBlogs.DataSource = data;
-                    gvBlogs.DataBind();
-                }
+                var data = blogList.Where(b => currentUser.SaveList.Contains(b.id)).ToList();
+                gvBlogs.DataSource = data;
+                gvBlogs.DataBind();
             }
         }
 
@@ -103,20 +99,20 @@ namespace foodblog1
             var blogList = Application["BlogList"] as List<Blog>;
             var userList = Application["UserList"] as List<User>;
 
-            if (blogList != null && Session["Username"] != null)
+            if (blogList != null)
             {
                 var blog = blogList.Find(b => b.id == blogId);
                 if (blog != null)
                 {
+                    Application.Lock();
                     blogList.Remove(blog);
-                    Application["BlogList"] = blogList;
-
                     foreach (User user in userList)
                     {
                         user.CreateList.Remove(blogId);
                     }
+                    Application["BlogList"] = blogList;
                     Application["UserList"] = userList;
-
+                    Application.UnLock();
                     LoadCreatedBlogs();
                 }
             }
@@ -125,18 +121,16 @@ namespace foodblog1
         protected void RemoveFromSaved(string blogId)
         {
             var userList = Application["UserList"] as List<User>;
+            string username = Session["Username"].ToString();
+            User currentUser = userList?.Find(u => u.Username == username);
 
-            if (Session["Username"] != null && userList != null)
+            if (currentUser != null)
             {
-                string username = Session["Username"].ToString();
-                User currentUser = userList.Find(u => u.Username == username);
-
-                if (currentUser != null)
-                {
-                    currentUser.SaveList.Remove(blogId);
-                    Application["UserList"] = userList;
-                    LoadSavedBlogs();
-                }
+                Application.Lock();
+                currentUser.SaveList.Remove(blogId);
+                Application["UserList"] = userList;
+                Application.UnLock();
+                LoadSavedBlogs();
             }
         }
     }
