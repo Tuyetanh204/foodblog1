@@ -11,61 +11,34 @@
     align-items: center;
     background-color: #008080;
     padding: 10px 20px;
-    position: fixed; /* Cố định thanh điều hướng */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Chiều rộng toàn bộ */
-    z-index: 1000; /* Ưu tiên hiển thị trên các phần khác */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng */
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Nội dung chính */
-.main-content {
-    display: flex;
-    padding: 10px 60px;
-    margin-top: 70px; /* Tạo khoảng trống để không bị navbar che khuất */
-}
-
-.tittle-green {
-    color: #008080;
-    padding: 0;
-    margin: 20px 0;
-}
-
-
-
-.navbar .left-section {
-    display: flex;
-    align-items: center;
-}
-
-.navbar .right-section {
-    display: flex;
-    align-items: center;
-}
-
-.navbar a {
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-    .navbar a.logo {
-        font-weight: bold;
-        font-size: 20px;
+    .navbar .left-section, .navbar .right-section {
+        display: flex;
+        align-items: center;
     }
 
-        .navbar a.logo:hover {
-            background-color: #008080;
-            color: white;
+    .navbar a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .navbar a.logo {
+            font-weight: bold;
         }
 
-    .navbar a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
 .dropdown {
     position: relative;
@@ -75,11 +48,8 @@
     .dropdown .dropbtn {
         font-size: 17px;
         border: none;
-        outline: none;
         color: white;
         padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
         margin: 0;
     }
 
@@ -88,7 +58,7 @@
     position: absolute;
     background-color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -97,7 +67,6 @@
         padding: 12px 16px;
         text-decoration: none;
         display: block;
-        text-align: left;
     }
 
         .dropdown-content a:hover {
@@ -108,66 +77,37 @@
     display: block;
 }
 
-/* Bố cục chính */
-
-.tittle-green {
-    color: #008080;
-    padding: 0;
-    margin: 20px 0;
+.main-content {
+    display: flex;
+    padding: 10px 60px;
+    margin-top: 70px;
 }
 
 .tittle-green {
     color: #008080;
-    padding: 0;
     margin: 20px 0;
 }
 
-
-/*footer.css*/
+/* Footer tối ưu */
 .footer {
-    background-color: #008080; /* Màu nền giống header */
+    background-color: #008080;
     color: white;
     text-align: left;
-    padding: 10px 8px;
+    padding: 8px 8px;
+    margin-top: 20px;
     font-family: Arial, sans-serif;
-    margin-top: 30px;
+    font-size: 14px; /* Cố định chữ toàn bộ footer là 14px */
 }
 
     .footer a {
-        color: white; /* Màu chữ */
+        color: white;
         text-decoration: none;
-        margin: 0 10px;
     }
 
         .footer a:hover {
             text-decoration: underline;
-            color: #ffd700; /* Hiệu ứng hover */
+            color: #ffd700;
         }
-
-.about-me {
-    margin: 20px 0;
-}
-
-    .about-me h4 {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .about-me p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-.logout-link {
-    display: block;
-    color: #333;
-    text-decoration: none;
-    padding: 10px;
-}
-
-    .logout-link:hover {
-        background-color: #ddd;
-    }
 
 /* Responsive cho màn hình nhỏ */
 @media screen and (max-width: 768px) {
@@ -177,13 +117,8 @@
     }
 
         .navbar a, .dropdown .dropbtn {
-            padding: 10px 5px;
-            font-size: 10px;
+            font-size: 14px;
         }
-
-            .navbar a.logo {
-                font-size: 14px;
-            }
 
     .main-content {
         flex-direction: column;
@@ -193,73 +128,10 @@
 
     .tittle-green {
         font-size: 20px;
-        margin: 20px 0;
     }
 
     .footer {
-        padding: 15px 5px;
-    }
-
-        .footer a {
-            font-size: 10px; /* Giảm kích thước chữ của thẻ a trong footer (từ mặc định xuống 10px) */
-        }
-
-    .about-me h4 {
-        font-size: 16px;
-    }
-
-    .about-me p {
-        font-size: 10px; /* Giảm kích thước chữ của thẻ p nhỏ hơn (từ 12px xuống 10px) */
-    }
-
-    .logout-link {
-        padding: 6px 8px;
-        font-size: 10px; /* Giảm kích thước chữ của thẻ a nhỏ hơn (từ 12px xuống 10px) */
+        padding: 12px 5px;
+        font-size: 10px;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .navbar {
-        padding: 6px 10px;
-    }
-
-        .navbar a, .dropdown .dropbtn {
-            padding: 8px 3px;
-            font-size: 9px; /* Giảm kích thước chữ của thẻ a nhỏ hơn nữa (từ 11px xuống 9px) */
-        }
-
-            .navbar a.logo {
-                font-size: 12px; /* Giảm kích thước logo */
-            }
-
-    .main-content {
-        padding: 5px 10px;
-        margin-top: 80px;
-    }
-
-    .tittle-green {
-        font-size: 18px;
-    }
-
-    .footer {
-        padding: 10px 5px;
-    }
-
-        .footer a {
-            font-size: 9px; /* Giảm kích thước chữ của thẻ a trong footer nhỏ hơn nữa (từ 10px xuống 9px) */
-        }
-
-    .about-me h4 {
-        font-size: 14px;
-    }
-
-    .about-me p {
-        font-size: 9px; /* Giảm kích thước chữ của thẻ p nhỏ hơn nữa (từ 11px xuống 9px) */
-    }
-
-    .logout-link {
-        padding: 5px 6px;
-        font-size: 9px; /* Giảm kích thước chữ của thẻ a nhỏ hơn nữa (từ 11px xuống 9px) */
-    }
-}
-

@@ -37,13 +37,10 @@
             Xin chào! Tôi là một người đam mê ẩm thực, chia sẻ công thức và hành trình ẩm thực đầy cảm hứng từ khắp mọi nơi.
         </p>
     </div>
-                
-    <div class="social-links">
         <a href="#"><i class="fa fa-facebook"></i> Facebook</a> |
         <a href="#"><i class='fa fa-twitter'></i> Twitter</a> |
         <a href="#"><i class='fa fa-instagram'></i> Instagram</a> |
         <a href="#"><i class='fa fa-youtube'></i> YouTube</a>
-    </div>
 </div>
 
 </body>
