@@ -45,6 +45,18 @@
     </style>
 
     <div class="main-content">
+        
+<asp:TextBox ID="searchTextBox" runat="server" placeholder="Nhập tiêu đề cần tìm"></asp:TextBox>
+<asp:DropDownList ID="categoryDropDown" runat="server">
+    <asp:ListItem Text="Tất cả" Value="" />
+    <asp:ListItem Text="Món chay" Value="Món chay" />
+    <asp:ListItem Text="Tráng miệng" Value="Tráng miệng" />
+    <asp:ListItem Text="Món chính" Value="Món chính" />
+    <asp:ListItem Text="Ăn vặt" Value="Ăn vặt" />
+</asp:DropDownList>
+<asp:Button ID="searchButton" runat="server" Text="Tìm kiếm" OnClick="SearchButton_Click" />
+
+
         <h2 id="categoryTitle" class="tittle-green" runat="server"></h2>
         <div id="articlesContainer" runat="server"></div>
     </div>

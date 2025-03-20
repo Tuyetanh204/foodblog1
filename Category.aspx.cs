@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace foodblog1
 {
-        public partial class Category : System.Web.UI.Page
+    public partial class Category : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
         {
-            protected void Page_Load(object sender, EventArgs e)
+            if (!IsPostBack)
             {
                 // Lấy giá trị danh mục từ query string
                 string category = Request.QueryString["category"];
@@ -39,13 +39,44 @@ namespace foodblog1
                     categoryTitle.InnerText = "Danh mục / Toàn bộ";
                 }
 
-                // Tạo HTML động
-                string htmlContent = "";
+                // Tạo nội dung HTML động
+                RenderBlogs(filteredBlogs);
+            }
+        }
 
-                if (filteredBlogs.Count > 0)
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            string searchText = searchTextBox.Text.Trim();
+            string selectedCategory = categoryDropDown.SelectedValue;
+
+            // Lấy danh sách blog từ Application
+            var blogList = (List<Blog>)Application["BlogList"];
+            var filteredBlogs = new List<Blog>();
+
+            if (blogList != null)
+            {
+                // Lọc blog theo danh mục và tiêu đề
+                filteredBlogs = blogList.Where(b =>
+                    (string.IsNullOrEmpty(selectedCategory) || b.category == selectedCategory) &&
+                    (string.IsNullOrEmpty(searchText) || b.title.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                ).ToList();
+            }
+
+            // Ẩn tiêu đề danh mục
+            categoryTitle.Visible = false;
+
+            // Tạo nội dung HTML động
+            RenderBlogs(filteredBlogs);
+        }
+
+        private void RenderBlogs(List<Blog> blogs)
+        {
+            string htmlContent = "";
+
+            if (blogs.Count > 0)
+            {
+                foreach (var blog in blogs)
                 {
-                    foreach (var blog in filteredBlogs)
-                    {
                     htmlContent += $@"
 <a href='Blog.aspx?BlogId={blog.id}' class='article-link'>
     <div class='article'>
@@ -59,16 +90,15 @@ namespace foodblog1
         </div>
     </div>
 </a>";
-
                 }
             }
-                else
-                {
-                    htmlContent = "<p>Không tìm thấy bài viết nào.</p>";
-                }
-
-                // Gán nội dung HTML vào container
-                articlesContainer.InnerHtml = htmlContent;
+            else
+            {
+                htmlContent = "<p>Không tìm thấy bài viết nào.</p>";
             }
+
+            // Gán nội dung HTML vào container
+            articlesContainer.InnerHtml = htmlContent;
         }
     }
+}
