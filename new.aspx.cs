@@ -13,10 +13,6 @@ namespace foodblog1
         {
             if (!IsPostBack)
             {
-                if (Session["Username"] == null)
-                {
-                    Response.Redirect("Login.aspx"); // Chuyển hướng nếu chưa đăng nhập (giả định có trang Login)
-                }
 
                 if (Request.QueryString["BlogId"] != null)
                 {
