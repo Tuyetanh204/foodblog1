@@ -116,7 +116,7 @@
     }
 
         .navbar a, .dropdown .dropbtn {
-            font-size: 10px;
+            font-size: 14px;
         }
 
     .main-content {
@@ -126,11 +126,11 @@
     }
 
     .tittle-green {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .footer {
         padding: 5px 5px;
-        font-size: 10px;
+        font-size: 14px;
     }
 }
