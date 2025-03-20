@@ -112,25 +112,25 @@
 @media screen and (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        padding: 8px 12px;
+        padding: 8px 8px;
     }
 
         .navbar a, .dropdown .dropbtn {
-            font-size: 14px;
+            font-size: 10px;
         }
 
     .main-content {
         flex-direction: column;
-        padding: 10px 20px;
+        padding: 8px 8px;
         margin-top: 100px;
     }
 
     .tittle-green {
-        font-size: 20px;
+        font-size: 10px;
     }
 
     .footer {
-        padding: 12px 5px;
-        font-size: 8px;
+        padding: 5px 5px;
+        font-size: 10px;
     }
 }
