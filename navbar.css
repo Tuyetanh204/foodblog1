@@ -127,8 +127,8 @@
 .footer {
     background-color: #008080; /* Màu nền giống header */
     color: white;
-    text-align: center;
-    padding: 20px 10px;
+    text-align: left;
+    padding: 10px 8px;
     font-family: Arial, sans-serif;
     margin-top: 30px;
 }
@@ -178,11 +178,11 @@
 
         .navbar a, .dropdown .dropbtn {
             padding: 10px 5px;
-            font-size: 10px; /* Giảm kích thước chữ của thẻ a nhỏ hơn (từ 12px xuống 10px) */
+            font-size: 10px;
         }
 
             .navbar a.logo {
-                font-size: 14px; /* Giảm kích thước logo */
+                font-size: 14px;
             }
 
     .main-content {
