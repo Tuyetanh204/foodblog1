@@ -90,7 +90,18 @@
                     <%# Container.DataItemIndex + 1 %>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="title" HeaderText="Tiêu đề" />
+
+<asp:TemplateField HeaderText="Tiêu đề">
+    <ItemTemplate>
+        <asp:HyperLink ID="lnkTitle" runat="server" 
+            Text='<%# Eval("title") %>' 
+            NavigateUrl='<%# "Blog.aspx?BlogId=" + Eval("id") %>' 
+            style="text-decoration: none; color: #009e9e;">
+        </asp:HyperLink>
+    </ItemTemplate>
+</asp:TemplateField>
+
+
             <asp:BoundField DataField="category" HeaderText="Danh mục" />
             <asp:TemplateField HeaderText="Thao tác">
                 <ItemTemplate>
