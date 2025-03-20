@@ -119,10 +119,10 @@
 
         <label for="time">Thời gian nấu (giờ/phút):</label>
         <input type="text" id="time" name="time" placeholder="VD: 30 phút" 
-               required pattern="^\d+\s?(phút|giờ)$" title="Vui lòng nhập thời gian hợp lệ, ví dụ: '30 phút' hoặc '2 giờ'." />
+               required pattern="^\d+\s?(phút|giờ)$" title="Vui lòng nhập thời gian hợp lệ, VD: '30 phút' hoặc '2 giờ'." />
 
         <label for="txtIngredientCustom">Nguyên liệu:</label>
-        <input type="text" id="txtIngredientCustom" placeholder="Nhập nguyên liệu và nhấn Enter" 
+        <input type="text" id="txtIngredientCustom" placeholder="Nhập từng nguyên liệu một rồi nhấn Enter" 
                pattern=".{2,50}" title="Nguyên liệu phải từ 2 đến 50 ký tự." />
         <asp:HiddenField ID="hdnIngredients" runat="server" />
         <ul id="ingredientList" class="ingredients-list"></ul>

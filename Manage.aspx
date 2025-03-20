@@ -14,9 +14,9 @@
             text-align: left;
             font-size: 16px;
         }
-        .gridview th:nth-child(1), .gridview td:nth-child(1) { width: 9%; min-width: 50px; }
-        .gridview th:nth-child(2), .gridview td:nth-child(2) { width: 50%; min-width: 200px; }
-        .gridview th:nth-child(3), .gridview td:nth-child(3) { width: 21%; min-width: 100px; }
+        .gridview th:nth-child(1), .gridview td:nth-child(1) { width: 7%; min-width: 50px; }
+        .gridview th:nth-child(2), .gridview td:nth-child(2) { width: 53%; min-width: 200px; }
+        .gridview th:nth-child(3), .gridview td:nth-child(3) { width: 20%; min-width: 100px; }
         .gridview th:nth-child(4), .gridview td:nth-child(4) { width: 20%; min-width: 150px; }
         .gridview th { background-color: #f2f2f2; }
         .gridview tr:last-child td { border-bottom: none; }
