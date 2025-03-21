@@ -32,7 +32,7 @@ namespace foodblog1
             if (blogList != null)
             {
                 var blog = blogList.Find(b => b.id == blogId);
-                if (blog != null && blog.author == Session["Username"].ToString())
+                if (blog != null)
                 {
                     pageTitle.InnerText = "Chỉnh sửa bài viết";
                     litMessage.Text = "<p style='color:blue;'>Đang chỉnh sửa bài viết: " + blog.title + "</p>";
@@ -48,7 +48,7 @@ namespace foodblog1
                 }
                 else
                 {
-                    litMessage.Text = "<p style='color:red;'>Không tìm thấy bài viết hoặc bạn không có quyền chỉnh sửa!</p>";
+                    litMessage.Text = "<p style='color:red;'>Không tìm thấy bài viết!</p>";
                 }
             }
         }

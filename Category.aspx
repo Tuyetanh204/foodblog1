@@ -24,7 +24,6 @@
     margin-bottom: 20px; /* Khoảng cách với phần bên dưới */
 }
 
-/* Đảm bảo các control ASP.NET hiển thị đẹp */
 .search input[type="text"] {
     padding: 8px;
     font-size: 16px;

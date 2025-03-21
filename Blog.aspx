@@ -34,11 +34,6 @@
   flex: 2;
 }
 
-.right-side h1 {
-  color: #009e9e;
-  margin-top: 0;
-}
-
 .right-side p {
   margin: 5px 0;
 }
