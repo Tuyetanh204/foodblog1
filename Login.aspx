@@ -4,14 +4,6 @@
       body {
         background-color: #f5f5f5;
       }
-      .container {
-        width: 40%;
-        margin: 150px auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
       h2 {
         text-align: center;
         color: #009e9e;
@@ -20,15 +12,7 @@
         display: block;
         margin-top: 10px;
       }
-      input[type="text"],
-           button {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
-      }
+
 
       .login-link {
         text-align: center;

@@ -2,19 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 40%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 70px;
         }
         h2 {
             text-align: center;
@@ -25,17 +13,7 @@
             margin-top: 10px;
             font-weight: bold;
         }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+
         button {
             background-color: #009e9e;
             border: none;
