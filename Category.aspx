@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Danh mục" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="foodblog1.Category" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <link rel="stylesheet" href="navbar.css" />
     <style>
         .main-content {
             margin-top: 70px; /* Đồng bộ với navbar từ MasterPage */
@@ -14,24 +16,7 @@
       padding: 20px;
       margin-bottom: 20px;
     }
-      button, .aspButton {
-    background-color: #009e9e;
-    border: 1px solid #009e9e;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
 
-    button:hover, .aspButton:hover {
-        background-color: white;
-        color: #009e9e;
-        border: 1px solid #009e9e;
-    }
 
 .main-content .article {
             background-color: #f2f2f2;
