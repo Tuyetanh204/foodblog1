@@ -14,6 +14,25 @@
       padding: 20px;
       margin-bottom: 20px;
     }
+      button, .aspButton {
+    background-color: #009e9e;
+    border: 1px solid #009e9e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+    button:hover, .aspButton:hover {
+        background-color: white;
+        color: #009e9e;
+        border: 1px solid #009e9e;
+    }
+
 .main-content .article {
             background-color: #f2f2f2;
             padding: 20px;
@@ -42,10 +61,28 @@
 .article-link:hover .article {
     background-color: #b6e0e0; /* Hiệu ứng hover khi di chuột vào */
 }
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    margin-bottom: 20px; /* Khoảng cách với phần bên dưới */
+}
+
+/* Đảm bảo các control ASP.NET hiển thị đẹp */
+.search input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.search select {
+    padding: 8px;
+    font-size: 16px;
+}
     </style>
 
     <div class="main-content">
-        
+        <div class="search">
 <asp:TextBox ID="searchTextBox" runat="server" placeholder="Nhập tiêu đề cần tìm"></asp:TextBox>
 <asp:DropDownList ID="categoryDropDown" runat="server">
     <asp:ListItem Text="Tất cả" Value="" />
@@ -54,8 +91,8 @@
     <asp:ListItem Text="Món chính" Value="Món chính" />
     <asp:ListItem Text="Ăn vặt" Value="Ăn vặt" />
 </asp:DropDownList>
-<asp:Button ID="searchButton" runat="server" Text="Tìm kiếm" OnClick="SearchButton_Click" />
-
+<asp:Button ID="searchButton" runat="server" Text="Tìm kiếm" OnClick="SearchButton_Click" CssClass="aspButton" />
+            </div>
 
         <h2 id="categoryTitle" class="tittle-green" runat="server"></h2>
         <div id="articlesContainer" runat="server"></div>
