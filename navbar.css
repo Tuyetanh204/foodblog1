@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
 }
-
+/*Điều hướng*/
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +76,7 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+/*nd chính*/
 .main-content {
     display: flex;
     padding: 10px 60px;
@@ -104,6 +104,14 @@ button, .aspButton {
         background-color: white;
         color: #009e9e;
         border: 1px solid #009e9e;
+    }
+.greenlink {
+    text-decoration: none;
+    color: #009e9e;
+}
+
+    .greenlink:hover {
+        text-decoration: underline;
     }
 
 /* Footer tối ưu */

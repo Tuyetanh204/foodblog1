@@ -12,14 +12,6 @@
   display: flex;
   margin-bottom: 50px;
 }
-a {
-  text-decoration: none;
-  color: #009e9e;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 .left-side {
   flex: 1;
   padding-right: 20px;
@@ -58,14 +50,6 @@ h3 {
   color: #009e9e;
 }
 
-.related-item a {
-  text-decoration: none;
-  color: #009e9e;
-}
-
-.related-item a:hover {
-  text-decoration: underline;
-}
 .ingredient-list {
   list-style-type: disc; /* Chấm tròn */
   margin-left: 20px; /* Thụt vào để căn chỉnh đẹp hơn */
@@ -114,8 +98,6 @@ h3 {
     color: #e74c3c; /* Màu chữ đỏ */
     border: 1px solid #e74c3c;
 }
-
-
     </style>
 
 
@@ -127,7 +109,7 @@ h3 {
     </div>
     <div class="right-side">
       <h1 id="blogTitle" class="tittle-green" runat="server"></h1>
-       <a id="categoryLink" runat="server" href="#">Danh mục mặc định</a>
+       <a class="greenlink" id="categoryLink" runat="server" href="#">Danh mục mặc định</a>
 
  <p>&#128100; <!-- Icon người --> <span id="blogAuthor" runat="server"></span></p>
 <p>&#128197; <!-- Icon lịch --> <span id="blogDate" runat="server"></span></p>
@@ -151,13 +133,13 @@ h3 {
   <div class="related-posts">
     <h3>Công thức tương tự</h3>
     <div class="related-item">
-      <a href="related1.html">Tiêu đề bài viết liên quan 1</a>
+      <a class="greenlink" href="related1.html">Tiêu đề bài viết liên quan 1</a>
     </div>
     <div class="related-item">
-      <a href="related2.html">Tiêu đề bài viết liên quan 2</a>
+      <a class="greenlink" href="related2.html">Tiêu đề bài viết liên quan 2</a>
     </div>
     <div class="related-item">
-      <a href="related3.html">Tiêu đề bài viết liên quan 3</a>
+      <a class="greenlink" href="related3.html">Tiêu đề bài viết liên quan 3</a>
     </div>
   </div>
 </div>
