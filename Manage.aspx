@@ -20,23 +20,6 @@
         .gridview th:nth-child(4), .gridview td:nth-child(4) { width: 20%; min-width: 150px; }
         .gridview th { background-color: #f2f2f2; }
         .gridview tr:last-child td { border-bottom: none; }
-        button, .aspButton {
-            background-color: #009e9e;
-            border: 1px solid #009e9e;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-        button:hover, .aspButton:hover {
-            background-color: white;
-            color: #009e9e;
-            border: 1px solid #009e9e;
-        }
         .tab-button {
             background-color: #009e9e;
             border: none;

@@ -2,10 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
       body {
-        font-family: Arial, sans-serif;
         background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
       }
       .container {
         width: 40%;
@@ -24,7 +21,6 @@
         margin-top: 10px;
       }
       input[type="text"],
-      input[type="password"],
            button {
         width: 100%;
         padding: 10px;
@@ -33,19 +29,7 @@
         border-radius: 4px;
         box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
       }
-      button {
-        background-color: #009e9e;
-        border: none;
-        color: white;
-        font-size: 16px;
-        margin-top: 20px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: white;
-        color: #009e9e;
-        border: 1px solid #009e9e;
-      }
+
       .login-link {
         text-align: center;
         margin-top: 20px;
