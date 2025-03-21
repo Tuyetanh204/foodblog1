@@ -4,11 +4,11 @@
         <link rel="stylesheet" href="navbar.css" />
     <style>
         .main-content {
-            margin-top: 70px; /* Đồng bộ với navbar từ MasterPage */
+            margin-top: 70px;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Nội dung căn giữa */
+            align-items: center;
         }
 
       .main-content .article {
@@ -16,36 +16,6 @@
       padding: 20px;
       margin-bottom: 20px;
     }
-
-
-.main-content .article {
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-        }
-        .main-content .article img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-right: 20px;
-        }
-        .main-content .article .details {
-            flex: 1;
-        }
-        .main-content .article h2 {
-            margin-top: 0;
-            color: #009e9e;
-        }
-            /*Nhấn vào mỗi bài viết*/
-    .article-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-.article-link:hover .article {
-    background-color: #b6e0e0; /* Hiệu ứng hover khi di chuột vào */
-}
 
 .search {
     display: flex;

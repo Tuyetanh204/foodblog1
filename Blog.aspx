@@ -7,7 +7,13 @@
         margin: 0;
         padding: 0;
       }
-           .container { width: 60%; margin: 0 auto; padding: 30px; background-color: white; border-radius: 8px; margin-top: 80px; }
+           .container {
+        width: 60%;
+        margin: 80px auto 0;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+    }
 .upper-section {
   display: flex;
   margin-bottom: 50px;
