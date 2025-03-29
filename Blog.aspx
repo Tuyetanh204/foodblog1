@@ -133,15 +133,8 @@ h3 {
   <!-- Công thức tương tự -->
   <div class="related-posts">
     <h3>Công thức tương tự</h3>
-    <div class="related-item">
-      <a class="greenlink" href="related1.html">Tiêu đề bài viết liên quan 1</a>
-    </div>
-    <div class="related-item">
-      <a class="greenlink" href="related2.html">Tiêu đề bài viết liên quan 2</a>
-    </div>
-    <div class="related-item">
-      <a class="greenlink" href="related3.html">Tiêu đề bài viết liên quan 3</a>
-    </div>
+          <div id="relatedPostsDiv" runat="server">
+        </div>
   </div>
 </div>
 </asp:Content>

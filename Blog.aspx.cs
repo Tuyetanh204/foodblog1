@@ -30,6 +30,7 @@ namespace foodblog1
                     blogContent.InnerHtml = currentBlog.content;
                     categoryLink.HRef = $"Category.aspx?category={currentBlog.category}";
                     categoryLink.InnerText = currentBlog.category;
+                    DisplayRelatedPosts(blogList, currentBlog);
                     // Xử lý phần nguyên liệu
                     ingredientList.InnerHtml = ""; // Xóa nội dung cũ (nếu có)
                     string[] ingredients = currentBlog.ingredient.Split(new string[] { ", " }, StringSplitOptions.None);
@@ -105,6 +106,21 @@ namespace foodblog1
                     }
                 }
             }
+        }
+        private void DisplayRelatedPosts(List<Blog> blogList, Blog currentBlog)
+        {
+            string relatedPostsHtml = "";
+            var relatedPosts = blogList
+                .Where(b => b.category == currentBlog.category && b.id != currentBlog.id)
+                .Take(3);
+
+            foreach (var post in relatedPosts)
+            {
+                relatedPostsHtml += $"<div class=\"related-item\"><a class=\"greenlink\" href=\"Blog.aspx?BlogId={post.id}\">{post.title}</a></div>";
+            }
+
+            // Cập nhật phần HTML
+            relatedPostsDiv.InnerHtml = relatedPostsHtml;
         }
 
     }
