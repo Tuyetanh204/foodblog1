@@ -27,7 +27,7 @@ namespace foodblog1
                     blogDate.InnerText = currentBlog.CreatedDate.ToString("dd/MM/yyyy");
                     blogTime.InnerText = currentBlog.time;
                     blogImage.ImageUrl = currentBlog.img;
-                    blogContent.InnerText = currentBlog.content;
+                    blogContent.InnerHtml = currentBlog.content;
                     categoryLink.HRef = $"Category.aspx?category={currentBlog.category}";
                     categoryLink.InnerText = currentBlog.category;
                     // Xử lý phần nguyên liệu

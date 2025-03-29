@@ -126,7 +126,7 @@ h3 {
     <h3>Nguyên liệu</h3>
     <ul id="ingredientList" runat="server" class="ingredient-list"></ul>
     <h3>Các bước nấu</h3>
-    <p id="blogContent" runat="server"></p>
+<div id="blogContent" runat="server"></div>
 </div>
 
 
