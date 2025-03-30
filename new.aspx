@@ -114,19 +114,27 @@
             <button type="submit" class="aspButton">Lưu</button>
         </div>
     </div>
-    <!-- Nhúng CKEditor 5 từ CDN -->
+ <!-- Nhúng CKEditor 5 từ CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
     <script type="text/javascript">
-        // Khởi tạo CKEditor cho txtSteps
+        let editorInstance; // Biến để lưu instance của CKEditor
+
+        // Khởi tạo CKEditor
         ClassicEditor
             .create(document.querySelector('#<%= txtSteps.ClientID %>'), {
                 toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'undo', 'redo'],
                 height: 400
             })
             .then(editor => {
+                editorInstance = editor; // Lưu instance
                 editor.model.document.on('change:data', () => {
                     document.getElementById('<%= txtSteps.ClientID %>').value = editor.getData();
                 });
+
+                // Nếu có nội dung từ server khi chỉnh sửa, gán vào đây
+                <% if (Request.QueryString["BlogId"] != null) { %>
+                    editor.setData('<%= ViewState["BlogContent"]?.ToString().Replace("'", "\\'") ?? "" %>');
+                <% } %>
             })
             .catch(error => {
                 console.error(error);

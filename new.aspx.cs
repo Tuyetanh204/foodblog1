@@ -36,11 +36,16 @@ namespace foodblog1
                 {
                     pageTitle.InnerText = "Chỉnh sửa bài viết";
                     litMessage.Text = "<p style='color:blue;'>Đang chỉnh sửa bài viết: " + blog.title + "</p>";
+
+                    // Gán giá trị cho các trường input thông thường
                     ClientScript.RegisterStartupScript(this.GetType(), "SetFormValues",
                         $"document.getElementById('title').value = '{blog.title.Replace("'", "\\'")}'; " +
                         $"document.getElementById('category').value = '{blog.category}'; " +
-                        $"document.getElementById('time').value = '{blog.time}'; " +
-                        $"document.getElementById('{txtSteps.ClientID}').value = '{blog.content.Replace("'", "\\'")}';", true);
+                        $"document.getElementById('time').value = '{blog.time}';", true);
+
+                    // Lưu nội dung txtSteps vào ViewState để CKEditor sử dụng
+                    ViewState["BlogContent"] = blog.content;
+
                     lblCurrentImage.Text = $"Ảnh hiện tại: {blog.img}";
                     lblCurrentImage.Visible = true;
                     hdnIngredients.Value = blog.ingredient;
