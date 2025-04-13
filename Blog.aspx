@@ -7,99 +7,163 @@
         margin: 0;
         padding: 0;
       }
-           .container {
+    .container {
         width: 60%;
-        margin: 80px auto 0;
-        padding: 30px;
+        margin: 80px auto 20px;
+        padding: 20px;
         background-color: white;
         border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-.upper-section {
-  display: flex;
-  margin-bottom: 50px;
-}
-.left-side {
-  flex: 1;
-  padding-right: 20px;
-}
 
-.blog-image {
-  width: 300px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-}
+    .upper-section {
+        display: flex;
+        margin-bottom: 30px;
+    }
 
-.right-side {
-  flex: 2;
-}
+    .left-side {
+        flex: 1;
+        padding-right: 20px;
+    }
 
-.right-side p {
-  margin: 5px 0;
-}
+    .blog-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+    }
 
-.lower-section {
-  margin-top: 20px;
-  line-height: 1.6;
-}
+    .right-side {
+        flex: 2;
+    }
 
-.related-posts {
-  margin-top: 50px;
-}
+    .right-side p {
+        font-size: 14px; /* Đồng bộ với .article .details p */
+        margin: 8px 0;
+        color: #333;
+    }
 
-h3 {
-  color: #009e9e;
-}
+    .lower-section {
+        margin-top: 20px;
+        line-height: 1.6;
+        font-size: 14px; /* Cỡ chữ nội dung chính */
+    }
 
-.ingredient-list {
-  list-style-type: disc; /* Chấm tròn */
-  margin-left: 20px; /* Thụt vào để căn chỉnh đẹp hơn */
-  padding-left: 10px;
-}
+    h3 {
+        color: #009e9e;
+        font-size: 20px; /* Nhỏ hơn .tittle-green, lớn hơn p */
+        margin: 20px 0 10px;
+    }
 
-.ingredient-list li {
-  margin-bottom: 2px; /* Tạo khoảng cách giữa các nguyên liệu */
-}
-.ingredient-list li::marker {
-  font-size: 20px; /* Tăng kích thước chấm tròn */
-  color: #009e9e; /* Đổi màu chấm tròn */
-}
-/* Nút Lưu - màu xanh */
-.save-button.save {
-    background-color: #009e9e; /* Màu nền xanh */
-    border: none;
-    color: white; /* Màu chữ trắng */
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
+    .ingredient-list {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 10px;
+        font-size: 14px; /* Đồng bộ với p */
+    }
 
-.save-button.save:hover {
-    background-color: white; /* Đổi màu nền khi hover */
-    color: #009e9e; /* Màu chữ xanh */
-    border: 1px solid #009e9e;
-}
+    .ingredient-list li {
+        margin-bottom: 8px;
+    }
 
-/* Nút Bỏ Lưu - màu đỏ */
-.save-button.unsave {
-    background-color: #e74c3c; /* Màu nền đỏ */
-    border: none;
-    color: white; /* Màu chữ trắng */
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
+    .ingredient-list li::marker {
+        font-size: 18px;
+        color: #009e9e;
+    }
 
-.save-button.unsave:hover {
-    background-color: white; /* Đổi màu nền khi hover */
-    color: #e74c3c; /* Màu chữ đỏ */
-    border: 1px solid #e74c3c;
-}
-    </style>
+    .related-posts {
+        margin-top: 40px;
+    }
+
+    /* Nút Bỏ Lưu - màu đỏ */
+    .save-button.unsave {
+        background-color: #e74c3c;
+        border: none;
+        color: white;
+    }
+
+    .save-button.unsave:hover {
+        background-color: white;
+        color: #e74c3c;
+        border: 1px solid #e74c3c;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+        .container {
+            width: 90%;
+            padding: 15px;
+            margin-top: 100px; /* Tránh navbar che */
+        }
+
+        .upper-section {
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .left-side {
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+        .blog-image {
+            max-width: 70%;
+        }
+
+        .right-side p {
+            font-size: 13px;
+        }
+
+        .lower-section {
+            font-size: 13px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        .ingredient-list {
+            font-size: 13px;
+        }
+
+        .ingredient-list li::marker {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .container {
+            width: 95%;
+            padding: 10px;
+            margin-top: 80px;
+        }
+
+        .right-side p {
+            font-size: 12px;
+        }
+
+        .lower-section {
+            font-size: 12px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        .ingredient-list {
+            font-size: 12px;
+            margin-left: 15px;
+        }
+
+        .ingredient-list li::marker {
+            font-size: 14px;
+        }
+
+        .related-posts {
+            margin-top: 30px;
+        }
+    }
+</style>
 
 
     <div class="container">
