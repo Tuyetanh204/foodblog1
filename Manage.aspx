@@ -56,7 +56,7 @@
 
     @media screen and (max-width: 768px) {
         .tittle-green {
-            margin-top: 120px;
+            margin-top: 70px;
         }
         .tab-container {
             justify-content: center;
@@ -88,7 +88,7 @@
 
     @media screen and (max-width: 480px) {
         .tittle-green {
-            margin-top: 100px;
+            margin-top: 50px;
         }
         .tab-button {
             padding: 6px 10px;

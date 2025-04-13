@@ -189,9 +189,7 @@ button, .aspButton {
 /* Responsive cho màn hình nhỏ */
 @media screen and (max-width: 768px) {
     .navbar {
-        flex-direction: column;
         padding: 8px;
-        min-height: 80px;
     }
 
         .navbar a, .dropdown .dropbtn {
@@ -202,7 +200,7 @@ button, .aspButton {
     .main-content {
         flex-direction: column;
         padding: 8px;
-        margin-top: 100px; /* Đồng bộ với Manage.aspx */
+        margin-top: 40px;
     }
 
     .tittle-green {
@@ -243,7 +241,6 @@ button, .aspButton {
 @media screen and (max-width: 480px) {
     .navbar {
         padding: 6px;
-        min-height: 60px;
     }
 
         .navbar a, .dropdown .dropbtn {
