@@ -34,7 +34,7 @@
             color: #009e9e !important;
             border: 1px solid #009e9e !important;
         }
-        h2.tittle-green {
+        .tittle-green {
             color: #008080;
             text-align: center;
             margin: 90px 0 20px 0;
@@ -46,22 +46,64 @@
             margin-left: 70px;
             margin-bottom: 20px;
         }
-        @media screen and (max-width: 768px) {
-            h2.tittle-green { font-size: 20px; margin-top: 20px; }
-            .tab-container { justify-content: center; margin-left: 0; flex-wrap: wrap; }
-            .tab-button { padding: 8px 12px; font-size: 12px; margin: 5px; }
-            .gridview { width: 100%; overflow-x: auto; display: block; }
-            .gridview table { min-width: 600px; }
-            .gridview th, .gridview td { padding: 10px 5px; font-size: 12px; }
-            .aspButton { padding: 6px 10px; font-size: 12px; }
+    /* Các phần CSS không thay đổi giữ nguyên như code gốc */
+
+    .tittle-green {
+        text-align: center;
+        margin: 90px 0 20px 0;
+        font-size: 28px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .tittle-green {
+            margin-top: 120px;
         }
-        @media screen and (max-width: 480px) {
-            h2.tittle-green { font-size: 18px; }
-            .tab-button { padding: 6px 10px; font-size: 11px; }
-            .gridview th, .gridview td { padding: 8px 3px; font-size: 11px; }
-            .aspButton { padding: 5px 8px; font-size: 11px; }
+        .tab-container {
+            justify-content: center;
+            margin-left: 0;
+            flex-wrap: wrap;
         }
-    </style>
+        .tab-button {
+            padding: 8px 12px;
+            font-size: 12px;
+            margin: 5px;
+        }
+        .gridview {
+            width: 100%;
+            overflow-x: auto;
+            display: block;
+        }
+        .gridview table {
+            min-width: 600px;
+        }
+        .gridview th, .gridview td {
+            padding: 10px 5px;
+            font-size: 12px;
+        }
+        .aspButton {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .tittle-green {
+            margin-top: 100px;
+        }
+        .tab-button {
+            padding: 6px 10px;
+            font-size: 11px;
+        }
+        .gridview th, .gridview td {
+            padding: 8px 3px;
+            font-size: 11px;
+        }
+        .aspButton {
+            padding: 5px 8px;
+            font-size: 11px;
+        }
+    }
+</style>
 
     <h2 id="title" class="tittle-green">QUẢN LÍ BÀI VIẾT</h2>
     <asp:Button ID="btnCreateLi" style="margin-left: 70px" runat="server" CssClass="tab-button" Text="Bài viết đã tạo" OnClientClick="setActive(this); return true;" OnClick="btnCreateLi_Click" />

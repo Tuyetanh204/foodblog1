@@ -30,6 +30,7 @@
     .category-list a:hover {
       background-color: #b6e0e0;
     }
+
   </style>
     <div class="main-content">
         <div class="left">
