@@ -1,11 +1,39 @@
 ﻿<%@ Page Title="Chi tiết công thức" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="Blog.aspx.cs" Inherits="foodblog1.Blog1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <style>
+        .main-content .left {
+      flex: 5;
+    }
+    .main-content .right {
+      flex: 1;
+    }
+
+
+    /* Phần danh mục */
+    .category-list {
+      padding: 0;
+      margin: 0;
+    }
+    .category-list li {
+      list-style: none;
+      margin: 10px 0;
+    }
+    .category-list a {
+      display: block;
+      color: #333;
+      padding: 15px;
+      background-color: #f5f5f5;
+      text-decoration: none;
+    }
+    .category-list a:hover {
+      background-color: #b6e0e0;
+    }
+
+    /*Bài blog*/
     .container {
-        width: 60%;
-        margin: 80px auto 20px;
+        width: 70%;
+        margin: 20px auto;
         padding: 20px;
-        background-color: white;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -87,7 +115,6 @@
         .container {
             width: 90%;
             padding: 15px;
-            margin-top: 100px;
         }
 
         .upper-section {
@@ -143,7 +170,6 @@
         .container {
             width: 95%;
             padding: 10px;
-            margin-top: 80px;
         }
 
         .upper-section {
@@ -193,7 +219,8 @@
     }
 </style>
 
-
+        <div class="main-content">
+                    <div class="left">
     <div class="container">
   <!-- Phần nửa trên -->
   <div class="upper-section">
@@ -229,4 +256,15 @@
         </div>
   </div>
 </div>
+                        </div>
+             <div class="right">
+            <h2 class="tittle-green">DANH MỤC</h2>
+            <ul class="category-list">
+    <li><a href="Category.aspx?category=Món chay">Món chay</a></li>
+    <li><a href="Category.aspx?category=Tráng miệng">Tráng miệng</a></li>
+    <li><a href="Category.aspx?category=Món chính">Món chính</a></li>
+    <li><a href="Category.aspx?category=Ăn vặt">Ăn vặt</a></li>
+</ul>
+            </div>
+            </div>
 </asp:Content>
