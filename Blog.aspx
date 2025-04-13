@@ -1,12 +1,6 @@
 ﻿<%@ Page Title="Chi tiết công thức" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="Blog.aspx.cs" Inherits="foodblog1.Blog1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-       <style>
-                 body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-      }
+<style>
     .container {
         width: 60%;
         margin: 80px auto 20px;
@@ -39,7 +33,7 @@
     }
 
     .right-side p {
-        font-size: 14px; /* Đồng bộ với .article .details p */
+        font-size: 14px;
         margin: 8px 0;
         color: #333;
     }
@@ -47,12 +41,12 @@
     .lower-section {
         margin-top: 20px;
         line-height: 1.6;
-        font-size: 14px; /* Cỡ chữ nội dung chính */
+        font-size: 16px;
     }
 
     h3 {
         color: #009e9e;
-        font-size: 20px; /* Nhỏ hơn .tittle-green, lớn hơn p */
+        font-size: 20px;
         margin: 20px 0 10px;
     }
 
@@ -60,7 +54,7 @@
         list-style-type: disc;
         margin-left: 20px;
         padding-left: 10px;
-        font-size: 14px; /* Đồng bộ với p */
+        font-size: 16px;
     }
 
     .ingredient-list li {
@@ -76,7 +70,6 @@
         margin-top: 40px;
     }
 
-    /* Nút Bỏ Lưu - màu đỏ */
     .save-button.unsave {
         background-color: #e74c3c;
         border: none;
@@ -94,40 +87,55 @@
         .container {
             width: 90%;
             padding: 15px;
-            margin-top: 100px; /* Tránh navbar che */
+            margin-top: 100px;
         }
 
         .upper-section {
-            flex-direction: column;
+            display: flex;
             margin-bottom: 20px;
         }
 
         .left-side {
-            padding-right: 0;
-            margin-bottom: 20px;
+            flex: 1;
+            padding-right: 10px;
         }
+
         .blog-image {
-            max-width: 70%;
+            max-width: 190px;
+            width: 100%;
+            height: auto;
+        }
+
+        .right-side {
+            flex: 2;
         }
 
         .right-side p {
-            font-size: 13px;
+            font-size: 11px;
         }
-
+        .right-side .tittle-green {
+            margin: 8px 0; /* Sửa từ .green-tittle thành .tittle-green */
+        }
         .lower-section {
             font-size: 13px;
         }
 
         h3 {
-            font-size: 18px;
+            font-size: 16px;
         }
+
 
         .ingredient-list {
             font-size: 13px;
+            margin-left: 15px;
         }
 
         .ingredient-list li::marker {
             font-size: 16px;
+        }
+
+        .related-posts {
+            margin-top: 10px;
         }
     }
 
@@ -138,8 +146,28 @@
             margin-top: 80px;
         }
 
+        .upper-section {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .left-side {
+            flex: 1;
+            padding-right: 8px;
+        }
+
+        .blog-image {
+            max-width: 90px;
+            width: 100%;
+            height: auto;
+        }
+
+        .right-side {
+            flex: 2;
+        }
+
         .right-side p {
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .lower-section {
@@ -147,12 +175,12 @@
         }
 
         h3 {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .ingredient-list {
             font-size: 12px;
-            margin-left: 15px;
+            margin-left: 10px;
         }
 
         .ingredient-list li::marker {
@@ -160,7 +188,7 @@
         }
 
         .related-posts {
-            margin-top: 30px;
+            margin-top: 20px;
         }
     }
 </style>

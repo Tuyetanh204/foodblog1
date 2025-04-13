@@ -116,7 +116,10 @@ button, .aspButton {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
+    cursor: poin
+        
+        
+        ter;
 }
 
     button:hover, .aspButton:hover {
@@ -127,6 +130,7 @@ button, .aspButton {
 .greenlink {
     text-decoration: none;
     color: #009e9e;
+    font-size: 16px;
 }
 
     .greenlink:hover {
@@ -205,6 +209,10 @@ button, .aspButton {
 
     .tittle-green {
         font-size: 16px;
+        margin: 12px 0;
+    }
+    p{
+        font-size: 13px;
     }
 
     .main-content .article h2 {
@@ -231,6 +239,12 @@ button, .aspButton {
         .main-content .article .details p {
         font-size: 13px; /* Giảm cỡ chữ cho thẻ <p> */
     }
+    h3 {
+        font-size: 13px;
+    }
+    .greenlink {
+        font-size: 13px;
+    }
 
     .footer {
         padding: 5px;
@@ -247,10 +261,6 @@ button, .aspButton {
             font-size: 12px;
             padding: 8px;
         }
-
-    .tittle-green {
-        font-size: 12px;
-    }
 
     .main-content .article h2 {
         font-size: 12px;
